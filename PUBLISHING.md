@@ -14,17 +14,13 @@ Also look at every `thumb.jpg`: it must show only the scene, never the app, a si
 
 Add new themes by copying only `theme.json`, `scene.js`, `welcome.js` and `thumb.jpg`. Never copy a whole theme folder from the working project: it can hold `media/`, receipts or reports.
 
-## 2. Publish your own repo (do this first)
+## 2. Your own repo (done)
 
-1. On GitHub, create a public repo `t3code-themes` under the ZirkoMirkoLabs GitHub account.
-2. From this folder:
-   ```
-   git remote add origin https://github.com/ZirkoMirkoLabs/t3code-themes.git
-   git push -u origin main
-   ```
-3. Add the topics `t3code`, `themes`, `wallpaper` and `canvas`.
+The repo is public at https://github.com/ZirkoMirkoLabs/t3code-themes, with the topics `t3code`, `themes`, `wallpaper` and `canvas`. GitHub Pages serves the player from `main` at https://zirkomirkolabs.github.io/t3code-themes/.
 
-That repo is the link you share on Twitter/X. Post a short screen recording of 3 or 4 themes playing; the motion is the selling point, and stills undersell it.
+To update it: change files here, run the check in step 1, commit, then push as ZirkoMirkoLabs.
+
+Thumbnails and clips come from the player, never from the app: `?theme=<id>&wallpaper` gives a clean scene, and `tools/record-clips.py` records video.
 
 ## 3. Offer it to T3 Code (pingdotgg/t3code)
 
