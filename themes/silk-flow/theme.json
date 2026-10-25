@@ -1,0 +1,30 @@
+{
+  "format": "t3theme/1",
+  "id": "silk-flow",
+  "name": "Silk",
+  "tagline": "folds of light, slowly breathing",
+  "description": "A premium abstract wallpaper: wide silk folds undulate slowly with a soft specular sheen and deep shadows between them, from deep plum through indigo to warm peach. Dithered so the gradients never band.",
+  "category": "Abstract",
+  "tags": ["dark", "abstract", "silk", "gradient", "minimal", "premium", "webgl"],
+  "author": "Zirko Mirko Labs",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#0e0a1a", "surface": "#171126", "text": "#f4eef6", "muted": "#bcaecb",
+    "accent": "#ffb48c", "accent2": "#b996ff", "border": "#2c2240", "selection": "#ffb48c",
+    "codeBg": "#0a0714", "codeText": "#ece3f2"
+  },
+  "sceneColors": ["#0c0818", "#4b1f5e", "#2b2b7c", "#ffb08a", "#ffe8da"],
+  "fonts": {
+    "display": "\"Segoe UI\", system-ui, sans-serif"
+  },
+  "shape": { "radius": 12, "density": "normal", "borderWidth": 1 },
+  "ui": { "surface": "glass", "glass": 0.74, "blur": 20, "shadow": "soft", "topbar": "glass", "decor": "none",
+          "heroStyle": "gradient", "overlay": "grain", "uppercase": false },
+  "icons": { "style": "thin", "color": "muted" },
+  "loader": { "style": "pulse" },
+  "motion": { "fps": 30, "resolution": 0.7, "interactive": false },
+  "scene": { "file": "scene.js", "params": { "speed": 1 } },
+  "welcome": { "file": "welcome.js", "height": 130, "text": "Silk" },
+  "textSafety": { "scrim": 0.5, "heroScrim": 0.3, "blur": 4, "busy": "low" }
+}

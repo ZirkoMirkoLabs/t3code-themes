@@ -1,0 +1,32 @@
+{
+  "format": "t3theme/1",
+  "id": "cozy-cabin",
+  "name": "Cozy Cabin",
+  "tagline": "warm windows, quiet snow",
+  "description": "A snowy pine forest at blue hour: a small log cabin with glowing amber windows and curling chimney smoke, snow-laden pines fading into mist, soft snowfall at several depths and a few twinkling stars.",
+  "category": "Nature",
+  "tags": ["dark", "winter", "snow", "cabin", "forest", "cozy", "night", "calm"],
+  "author": "Zirko Mirko Labs",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#0a1122", "surface": "#111a30", "text": "#eef2fa", "muted": "#a3b1cc",
+    "accent": "#ffb357", "accent2": "#9db2d6", "border": "#24304d", "selection": "#ffb357",
+    "codeBg": "#080e1c", "codeText": "#dfe6f3"
+  },
+  "sceneColors": ["#0a1230", "#3b5182", "#9db2d6", "#2a3d66", "#0d1729", "#e8f0fc", "#ffb357", "#4b2f23"],
+  "fonts": {
+    "ui": "\"Segoe UI\", system-ui, sans-serif",
+    "mono": "\"Cascadia Mono\", Consolas, monospace",
+    "display": "\"Palatino Linotype\", Georgia, serif"
+  },
+  "shape": { "radius": 12, "density": "normal", "borderWidth": 1 },
+  "ui": { "surface": "glass", "glass": 0.78, "blur": 14, "shadow": "soft", "topbar": "glass", "decor": "none",
+          "textGlow": false, "overlay": "none", "heroStyle": "glow", "uppercase": false },
+  "icons": { "style": "thin", "color": "muted" },
+  "loader": { "style": "pulse" },
+  "motion": { "fps": 30, "resolution": 0.75, "interactive": false },
+  "scene": { "file": "scene.js", "params": { "snow": 150, "stars": 40 } },
+  "welcome": { "file": "welcome.js", "height": 140, "text": "Cozy Cabin" },
+  "textSafety": { "scrim": 0.5, "heroScrim": 0.3, "blur": 4, "busy": "medium" }
+}
