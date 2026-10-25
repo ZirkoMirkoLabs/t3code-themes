@@ -13,6 +13,7 @@ out, secs, ids = args[0], float(args[1]), args[2].split(',')
 title = '--title' in args
 W, H = map(int, (args[args.index('--size') + 1] if '--size' in args else '1920x1080').split('x'))
 warm = float(args[args.index('--warm') + 1]) if '--warm' in args else 6.0
+out = os.path.abspath(out)
 os.makedirs(out, exist_ok=True)
 
 from playwright.async_api import async_playwright
