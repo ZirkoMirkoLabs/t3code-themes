@@ -1,11 +1,11 @@
 @echo off
 setlocal
-title T3 Skins
+title T3 Code Themes
 set "HERE=%~dp0"
 if exist "%HERE%launcher\node_modules\electron\dist\electron.exe" if exist "%HERE%launcher\node_modules\ffmpeg-static\package.json" goto launch
 
 echo.
-echo   T3 Skins - first-time setup
+echo   T3 Code Themes - first-time setup
 echo   ---------------------------
 echo   Downloading the skin window (Electron) and the video tool (ffmpeg).
 echo   This happens once and takes 1-3 minutes, about 200 MB.
@@ -31,8 +31,8 @@ if not exist "%HERE%launcher\node_modules\electron\dist\electron.exe" (
   exit /b 1
 )
 echo.
-echo   Setup complete. Starting T3 Skins...
+echo   Setup complete. Starting T3 Code Themes...
 echo.
 
 :launch
-call "%HERE%launcher\Launch-Space-Terminal.cmd"
+call "%HERE%launcher\Launch-T3-Code-Themes.cmd"

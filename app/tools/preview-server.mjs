@@ -26,4 +26,4 @@ const server=http.createServer(async(req,res)=>{
     if(req.method==='HEAD')res.end();else fs.createReadStream(file,{start,end}).pipe(res);
   }catch{res.writeHead(404).end();}
 });
-server.listen(43872,'127.0.0.1',()=>console.log('Space skin playground: http://127.0.0.1:43872/'));
+server.listen(43872,'127.0.0.1',()=>console.log('T3 Code Themes playground: http://127.0.0.1:43872/'));

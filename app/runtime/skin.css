@@ -1,4 +1,4 @@
-/* Space Terminal. Every override disappears when the owned html attribute is removed. */
+/* T3 Code Themes. Every override disappears when the owned html attribute is removed. */
 html[data-space-skin='on'] {
   color-scheme: dark;
   background: #030810 !important;

@@ -6,7 +6,7 @@
   "description": "A 1983 terminal: drifting ASCII fields, a spinning ASCII donut in the free space, characters that scramble under your cursor. Monospace everywhere, square corners, phosphor glow and scanlines.",
   "category": "Retro",
   "tags": ["dark", "ascii", "terminal", "crt", "green", "hacker", "80s"],
-  "author": "T3 Skins",
+  "author": "T3 Code Themes",
   "appearance": "dark",
   "palette": {
     "bg": "#020a04", "surface": "#04140a", "text": "#a6ffb8", "muted": "#5fcf78",

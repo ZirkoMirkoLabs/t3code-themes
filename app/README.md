@@ -10,7 +10,7 @@ It ships with 17 themes. **Cozy Room** is the default: a rainy night room with a
 2. Open T3 Code and keep it running.
 3. Double-click **`START.cmd`** (macOS/Linux: run `sh start.sh` in this folder). The first launch downloads Electron and ffmpeg (about 200 MB, 1–3 minutes). Later launches open straight away.
 
-The launcher finds your T3 install and its running server by itself. On the first launch, T3 asks you once to approve the "Space Terminal" client.
+The launcher finds your T3 install and its running server by itself. On the first launch, T3 asks you once to approve the "T3 Code Themes" client.
 
 ## Using it
 

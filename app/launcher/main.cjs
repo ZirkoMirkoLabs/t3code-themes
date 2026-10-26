@@ -39,7 +39,7 @@ async function resolveOrigin() {
   return live[0].origin;
 }
 
-app.setName('T3 Skins');
+app.setName('T3 Code Themes');
 milestone('app-named');
 fsSync.mkdirSync(path.join(profile, 'session'), { recursive: true });
 app.setPath('userData', path.join(__dirname, '.profile'));
@@ -180,7 +180,7 @@ async function pairingDestination() {
   const install = installs.find(i => (i.channel === 'nightly') === /nightly/i.test(serverVersion)) || installs[0];
   if (!install && !args.includes('--t3-command')) throw Error('T3 install not found');
   const command = option('--t3-command', install && install.command);
-  const cliArgs = ['pair', '--label', 'Space Terminal'];
+  const cliArgs = ['pair', '--label', 'T3 Code Themes'];
   const entrypoint = option('--t3-entrypoint', args.includes('--t3-command') ? null : install.entrypoint);
   if (entrypoint) cliArgs.unshift(entrypoint);
   const scopes = option('--scopes', null);
@@ -209,7 +209,7 @@ app.whenReady().then(async () => {
   // await. Hidden helper-process startup must not hide the interactive client.
   window = new BrowserWindow({
     width: 1512, height: 982, minWidth: 850, minHeight: 600,
-    show: false, title: 'T3 Space Terminal', backgroundColor: '#071019',
+    show: false, title: 'T3 Code Themes', backgroundColor: '#071019',
     webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true, webSecurity: true },
   });
   window.on('page-title-updated', event => event.preventDefault());
@@ -624,9 +624,9 @@ async function themeBrief(req) {
   const quoted = '"' + idea.replace(/["\\$`]/g, '') + '"';
   const cmd = `node studio/theme-gen.mjs --engine claude-cli --reply-file ${replyRel} --prompt ${quoted} --appearance ${appearance} --motion ${motion}${req.interactive ? ' --interactive' : ''}`;
   const lines = [
-    `Make a new T3 Skins theme: "${idea}"`,
+    `Make a new T3 Code Themes theme: "${idea}"`,
     '',
-    `T3 Skins (this folder: ${root}) is the Electron launcher that skins T3 Code with live themes. Work inside a new themes/<id>/ folder only; do not change the runtime, the launcher or other themes.`,
+    `T3 Code Themes (this folder: ${root}) is the Electron app that adds live themes to T3 Code. Work inside a new themes/<id>/ folder only; do not change the runtime, the launcher or other themes.`,
     '',
     '## Request',
     `- Idea: ${idea}`,
@@ -653,7 +653,7 @@ async function themeBrief(req) {
     '- `node tools/test-themes.cjs` passes.',
     "- The pack loads cleanly: `node -e \"const r=require('./launcher/theme-library.cjs').toItem('themes/<id>');console.log(r.error||r.report.warnings)\"`",
     '- Thumbnail: start `node tools/preview-server.mjs` in the background, then run `electron tools/capture.cjs <id> --thumbs` (clear ELECTRON_RUN_AS_NODE first). Open evidence/v3/<id>-welcome.png and fix what you see: text readability, busy areas behind the composer, contrast.',
-    '- The T3 Skins library picks up the new folder by itself (Themes ▸ Library ▸ Yours).',
+    '- The T3 Code Themes library picks up the new folder by itself (Themes ▸ Library ▸ Yours).',
     '',
     '## Then',
     'Summarise the theme in a few lines and give its id. The user will ask for tweaks here ("calmer", "more green"): edit the files in place and re-run the checks.',

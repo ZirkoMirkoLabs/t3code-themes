@@ -8,7 +8,7 @@
     mount: mount,
     destroy: destroy,
     setMode: function (mode) {
-      if (MODES.indexOf(mode) < 0) throw new TypeError('Unknown Space skin mode: ' + mode);
+      if (MODES.indexOf(mode) < 0) throw new TypeError('Unknown skin mode: ' + mode);
       if (current) { current.mode = mode; current.videoBlocked = false; sync(); }
       return api;
     },
@@ -74,7 +74,7 @@
 
   function mount(options) {
     if (current) return api;
-    if (!document.body) throw new Error('Mount Space skin after the document body is ready.');
+    if (!document.body) throw new Error('Mount the skin after the document body is ready.');
     options = options || {};
     var base = new URL(options.assetBase || './assets/', document.baseURI);
     if (!/^https?:$|^file:$|^t3-skin:$/.test(base.protocol)) throw new TypeError('Use an HTTP(S), file, or launcher asset directory.');
@@ -108,11 +108,11 @@
     s.visual.append(s.art, s.video, s.canvas);
     var shade = el('div', 't3-space-shade');
     var caption = el('div', 't3-space-caption');
-    caption.append(el('span', '', 'SPACE TERMINAL'), el('span', '', 'RING STUDY / DECORATIVE ART'));
+    caption.append(el('span', '', 'T3 CODE THEMES'), el('span', '', 'RING STUDY / DECORATIVE ART'));
     s.backdrop.append(s.visual, shade, caption);
     s.controls = el('section', 't3-space-controls');
-    s.controls.setAttribute('aria-label', 'Space skin');
-    s.toggle = el('button', 't3-space-toggle', '◌  Space skin');
+    s.controls.setAttribute('aria-label', 'Skin');
+    s.toggle = el('button', 't3-space-toggle', '◌  Skin');
     s.toggle.type = 'button';
     s.toggle.setAttribute('aria-expanded', 'false');
     s.toggle.setAttribute('aria-controls', 't3-space-settings');
@@ -120,7 +120,7 @@
     s.panel.id = 't3-space-settings';
     s.panel.hidden = true;
     var heading = el('div', 't3-space-heading');
-    heading.append(el('strong', '', 'Space skin'), el('span', '', 'YOUR WORK, IN ORBIT'));
+    heading.append(el('strong', '', 'Skin'), el('span', '', 'YOUR WORK, IN ORBIT'));
     var modes = el('div', 't3-space-modes');
     modes.setAttribute('role', 'group');
     modes.setAttribute('aria-label', 'Background mode');

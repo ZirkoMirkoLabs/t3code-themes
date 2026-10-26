@@ -931,7 +931,7 @@
       listen(s, studio, 'click', function () { tell('__t3skin-studio:open'); }); inner.append(studio);
     }
     cr.append(inner);
-    if (!s.launcher) { s.genGo.disabled = true; s.threadGo.disabled = true; s.genStatus.textContent = 'Creating themes needs the T3 Skins launcher.'; }
+    if (!s.launcher) { s.genGo.disabled = true; s.threadGo.disabled = true; s.genStatus.textContent = 'Creating themes needs the T3 Code Themes app.'; }
 
     // footer: playback on the left, file actions on the right (one row on desktop)
     var foot = el('div', 't3s-g-foot');
@@ -1238,7 +1238,7 @@
     var row = el('div', 't3s-g-prow'); row.append(useRow, view);
     var panel = el('div', 't3s-g-ppanel'); panel.hidden = true;
     var coreLab = el('div', 't3s-g-plab'); coreLab.append(el('strong', '', 'Core contract'), el('span', '', 'always sent · locked'));
-    var core = el('pre', 't3s-g-core'); core.textContent = P.core || 'The core contract is shown in the T3 Skins launcher.'; core.tabIndex = 0; core.setAttribute('aria-label', 'Core contract, read only');
+    var core = el('pre', 't3s-g-core'); core.textContent = P.core || 'The core contract is shown in the T3 Code Themes app.'; core.tabIndex = 0; core.setAttribute('aria-label', 'Core contract, read only');
     var tasteLab = el('div', 't3s-g-plab'); tasteLab.append(el('strong', '', 'Design guidance'), s.tasteState = el('span', ''));
     s.promptTaste = el('textarea', 't3s-g-taste'); s.promptTaste.rows = 10; s.promptTaste.maxLength = P.tasteMax || 12000; s.promptTaste.spellcheck = false;
     s.promptTaste.value = P.taste || P.tasteDefault || ''; s.promptTaste.setAttribute('aria-label', 'Design guidance (editable)');

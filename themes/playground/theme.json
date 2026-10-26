@@ -6,7 +6,7 @@
   "description": "A physics toy box. Bouncy blobs with googly eyes fall, stack and land on top of the composer; the sidebar, top bar and message lane are solid walls, so toys never sit behind text. Drag to fling, click empty space to add one.",
   "category": "Interactive",
   "tags": ["light", "physics", "interactive", "toy", "playful", "colourful"],
-  "author": "T3 Skins",
+  "author": "T3 Code Themes",
   "appearance": "light",
   "palette": {
     "bg": "#fbf4e8", "surface": "#ffffff", "text": "#1b1b2f", "muted": "#525268",
