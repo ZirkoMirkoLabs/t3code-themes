@@ -226,8 +226,8 @@ export async function resolveModel(family, key, deadline = Date.now() + 10000) {
 export const TASTE_MAX = 12000, CUSTOM_MAX = 4000;
 export function corePrompt() {
   const tpl = fs.readFileSync(path.join(here, 'theme-master-prompt.md'), 'utf8');
-  const ex = JSON.stringify(JSON.parse(fs.readFileSync(path.join(themesRoot, 'cozy-cabin', 'theme.json'), 'utf8')));
-  const exWelcome = fs.readFileSync(path.join(themesRoot, 'cozy-cabin', 'welcome.js'), 'utf8');
+  const ex = JSON.stringify(JSON.parse(fs.readFileSync(path.join(themesRoot, 'rainy-cafe', 'theme.json'), 'utf8')));
+  const exWelcome = fs.readFileSync(path.join(themesRoot, 'rainy-cafe', 'welcome.js'), 'utf8');
   return tpl.replace('{{TEMPLATES}}', catalogText()).replace('{{EXAMPLE}}', 'theme: ' + ex + '\n\nwelcome.js:\n' + exWelcome);
 }
 export function defaultTaste() { try { return fs.readFileSync(path.join(here, 'theme-design-taste.md'), 'utf8').replace(/\r\n?/g, '\n').trim(); } catch { return ''; } }

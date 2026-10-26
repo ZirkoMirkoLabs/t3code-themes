@@ -6,9 +6,9 @@ It ships with 17 themes. **Cozy Room** is the default: a rainy night room with a
 
 ## Install (3 steps)
 
-1. Install **T3 Code** (stable or nightly) and **Node.js LTS** from https://nodejs.org. Node is only needed once, for the download.
+1. Install **T3 Code** (stable or nightly) and **Node.js LTS** from https://nodejs.org. On Windows, Node is only needed for the first download; on macOS and Linux, `start.sh` also uses it to start the app.
 2. Open T3 Code and keep it running.
-3. Double-click **`START.cmd`** (macOS/Linux: run `./start.sh`). The first launch downloads Electron and ffmpeg (about 200 MB, 1–3 minutes). Later launches open straight away.
+3. Double-click **`START.cmd`** (macOS/Linux: run `sh start.sh` in this folder). The first launch downloads Electron and ffmpeg (about 200 MB, 1–3 minutes). Later launches open straight away.
 
 The launcher finds your T3 install and its running server by itself. On the first launch, T3 asks you once to approve the "Space Terminal" client.
 

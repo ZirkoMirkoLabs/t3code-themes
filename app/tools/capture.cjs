@@ -21,7 +21,7 @@ app.whenReady().then(async () => {
   win.webContents.on('console-message', (e, level, msg) => { const m = typeof e?.message === 'string' ? e.message : msg; const l = typeof e?.level === 'string' ? e.level : level; if (l === 'error' || l === 3 || /error/i.test(m)) errors.push(String(m).slice(0, 200)); });
   for (const id of list) {
     errors.length = 0;
-    await win.loadURL(`${base}/preview/v3.html?theme=${encodeURIComponent(id)}&view=${view}&motion=${motion}${open ? '&open=1' : ''}${opt('--query', null) ? '&' + opt('--query', '') : ''}`);
+    await win.loadURL(`${base}/preview/index.html?theme=${encodeURIComponent(id)}&view=${view}&motion=${motion}${open ? '&open=1' : ''}${opt('--query', null) ? '&' + opt('--query', '') : ''}`);
     // Thumbnails: hide the Themes button before the scene settles (a hidden window may not repaint later).
     if (argv.includes('--thumbs')) await win.webContents.executeJavaScript("new Promise(r => { const t = setInterval(() => { const c = document.querySelector('.t3s-controls'); if (c) { c.style.display = 'none'; clearInterval(t); r(1); } }, 20); setTimeout(() => r(0), 3000); })");
     await new Promise(r => setTimeout(r, wait));

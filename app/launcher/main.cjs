@@ -714,18 +714,21 @@ function watchThemes() {
   if (themeTimer) return;
   try { scanThemes(true); themeTimer = setInterval(() => scanThemes(false), 2500); } catch {}
 }
-// Library card thumbnail for a new theme: a shot of the real window with the Themes panel hidden.
+// Library card thumbnail for a new theme: the scene only. Everything of T3 (sidebar, thread names, chat, composer)
+// is hidden for the shot, because thumbnails travel with exported .t3skin files.
+const THUMB_ON = "(() => { const s = document.createElement('style'); s.id = 't3s-thumbshot'; s.textContent = 'body > *:not(.t3s-backdrop):not(.t3s-companion), body > *:not(.t3s-backdrop):not(.t3s-companion) * { visibility: hidden !important; }'; document.head.append(s); })();";
+const THUMB_OFF = "document.getElementById('t3s-thumbshot')?.remove();";
 async function captureThumb(id) {
   const dir = path.join(themeLib.themesRoot, id);
   if (readSettings().skin !== id || !fsSync.existsSync(dir) || fsSync.existsSync(path.join(dir, 'thumb.jpg')) || !window || window.isDestroyed()) return;
   try {
-    await runtimeCall("document.querySelector('.t3s-controls') && (document.querySelector('.t3s-controls').style.visibility = 'hidden');");
-    await new Promise(r => setTimeout(r, 120));
+    await runtimeCall(THUMB_ON);
+    await new Promise(r => setTimeout(r, 250));
     const img = await window.webContents.capturePage();
-    await runtimeCall("document.querySelector('.t3s-controls') && (document.querySelector('.t3s-controls').style.visibility = '');");
+    await runtimeCall(THUMB_OFF);
     await fs.writeFile(path.join(dir, 'thumb.jpg'), img.resize({ width: 480, quality: 'best' }).toJPEG(82));
     const r = themeLib.toItem(dir); if (r.item) pageEvent({ type: 'items', items: [r.item] });
-  } catch { await runtimeCall("document.querySelector('.t3s-controls') && (document.querySelector('.t3s-controls').style.visibility = '');").catch(() => {}); }
+  } catch { await runtimeCall(THUMB_OFF).catch(() => {}); }
 }
 async function discardTheme(id) {
   id = path.basename(String(id || '')); const dir = path.join(themeLib.themesRoot, id);

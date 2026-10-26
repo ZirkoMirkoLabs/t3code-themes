@@ -2,7 +2,7 @@
 
 Needs Python with Playwright (pip install playwright), Google Chrome and ffmpeg on PATH.
 1. From the repo folder:  python -m http.server 8791
-2. In a second terminal:   python tools/record-clips.py clips 6 koi-pond,cozy-cabin --title
+2. In a second terminal:   python tools/record-clips.py clips 6 koi-pond,cozy-room --title
 Options: --title shows the title animation, --size 1920x1080 sets the frame, --warm 6 waits
 before recording when there is no title. Writes clips/<id>.mp4 (H.264, 30 fps, crf 17).
 """
