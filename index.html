@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"><link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>T3 Code Themes · live player</title>
-<meta name="description" content="Ten animated, code-only themes for T3 Code. Play them live or use one as a desktop wallpaper.">
+<meta name="description" content="Animated themes for T3 Code, drawn in code. Play them live or use one as a desktop wallpaper.">
 <style>
   html, body { margin: 0; height: 100%; overflow: hidden; background: #000; font: 14px/1.4 system-ui, "Segoe UI", sans-serif; color: #fff; }
   #stage, #stage iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; }
@@ -33,14 +33,14 @@
 <script src="player/sandbox.js"></script>
 <script>
 (async function () {
-  var IDS = ['rooftop-dusk', 'ridgeline', 'koi-pond', 'lantern-sky', 'cozy-cabin', 'great-wave', 'meadow-breeze', 'frutiger-aero', 'blue-tide', 'silk-flow'];
+  var IDS = ['cozy-room', 'meadow-breeze', 'koi-pond', 'silk-flow', 'rainy-cafe', 'portal-lab', 'playground'];
   var q = new URLSearchParams(location.search);
   var clean = q.has('clean') || q.has('wallpaper');           // ?wallpaper hides every control
   var showTitle = q.has('title') ? q.get('title') !== '0' : !clean;
   var cycle = Number(q.get('cycle')) || 0;                     // ?cycle=20 switches theme every 20 s
   if (clean) document.body.classList.add('clean');
   var stage = document.getElementById('stage'), titleBox = document.getElementById('title'), bar = document.getElementById('bar'), nameEl = document.getElementById('name');
-  var cache = {}, scene = null, title = null, current = null;
+  var cache = {}, scene = null, comp = null, title = null, current = null;
 
   async function load(id) {
     if (cache[id]) return cache[id];
@@ -52,11 +52,18 @@
 
   async function show(id) {
     var item = await load(id), t = item.theme; current = id;
-    if (scene) scene.destroy(); if (title) title.destroy(); title = null;
-    scene = T3SkinSandbox.create({ code: item.scene, kind: 'scene', palette: palette(t), params: (t.scene && t.scene.params) || {}, light: t.appearance === 'light',
+    if (scene) scene.destroy(); if (comp) comp.destroy(); if (title) title.destroy(); title = comp = null;
+    var params = (t.scene && t.scene.params) || {};
+    scene = T3SkinSandbox.create({ code: item.scene, kind: 'scene', palette: palette(t), params: params, light: t.appearance === 'light',
       motion: 'live', fps: 30, dpr: Math.min(devicePixelRatio || 1, 2), width: innerWidth, height: innerHeight, run: true, zones: [], t0: 8, budgetMs: 40 });
     stage.replaceChildren(scene.el);
-    if (showTitle && item.welcome && t.welcome) {
+    // themes with a companion (Cozy Room's cat) draw it in a second, click-through layer above the scene
+    if (params.companion === true) {
+      comp = T3SkinSandbox.create({ code: item.scene, kind: 'scene', layer: 'companion', palette: palette(t), params: params, light: t.appearance === 'light',
+        motion: 'live', fps: 60, dpr: Math.min(devicePixelRatio || 1, 2), width: innerWidth, height: innerHeight, run: true, zones: [], t0: 0, budgetMs: 40 });
+      comp.el.style.position = 'absolute'; comp.el.style.inset = '0'; comp.el.style.pointerEvents = 'none'; stage.append(comp.el);
+    }
+    if (showTitle && item.welcome && t.welcome && params.companion !== true) {   // Cozy Room's neon sign is already in the room
       title = T3SkinSandbox.create({ code: item.welcome, kind: 'welcome', palette: palette(t), params: t.welcome.params || {}, text: t.welcome.text || t.name, light: t.appearance === 'light',
         motion: 'live', fps: 30, dpr: Math.min(devicePixelRatio || 1, 2), width: innerWidth, height: 140, run: true, t0: 0, budgetMs: 20 });
       titleBox.replaceChildren(title.el);
@@ -76,11 +83,12 @@
   var fb = document.createElement('button'); fb.className = 'b'; fb.textContent = 'Full screen';
   fb.onclick = function () { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }; bar.append(fb);
 
-  addEventListener('resize', function () { if (scene) scene.resize(innerWidth, innerHeight); if (title) title.resize(innerWidth, 140); });
+  addEventListener('resize', function () { if (scene) scene.resize(innerWidth, innerHeight); if (comp) comp.resize(innerWidth, innerHeight); if (title) title.resize(innerWidth, 140); });
   ['pointermove', 'pointerdown', 'pointerup'].forEach(function (type) {
     addEventListener(type, function (e) {
       var over = !!(e.target.closest && e.target.closest('#bar'));
-      if (scene) scene.pointer({ type: 'pointer', kind: type === 'pointerdown' ? 'down' : type === 'pointerup' ? 'up' : 'move', x: e.clientX, y: e.clientY, overUI: over, inside: true });
+      var ev = { type: 'pointer', kind: type === 'pointerdown' ? 'down' : type === 'pointerup' ? 'up' : 'move', x: e.clientX, y: e.clientY, overUI: over, inside: true };
+      if (scene) scene.pointer(ev); if (comp) comp.pointer(ev);
       idle();
     });
   });

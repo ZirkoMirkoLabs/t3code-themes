@@ -1,0 +1,132 @@
+{
+  "format": "t3theme/1",
+  "id": "outrun",
+  "name": "Outrun",
+  "tagline": "a striped sun on an endless grid",
+  "category": "Retro",
+  "tags": [
+    "synthwave",
+    "80s",
+    "retro",
+    "neon",
+    "grid",
+    "sunset"
+  ],
+  "description": "A striped sun sinks behind chrome-violet mountains while a neon grid scrolls toward you. Stars come out in the indigo sky and the sun breathes with a soft glow.",
+  "appearance": "dark",
+  "palette": {
+    "bg": "#120a24",
+    "surface": "#1b1033",
+    "text": "#f4edff",
+    "muted": "#b4a4d0",
+    "accent": "#ff6fb8",
+    "accent2": "#ffb347",
+    "border": "#2f2050",
+    "selection": "#4c2559",
+    "codeBg": "#0e0820",
+    "codeText": "#ece2ff"
+  },
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Bahnschrift, Segoe UI, sans-serif"
+  },
+  "shape": {
+    "radius": 6,
+    "density": "normal",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.84,
+    "blur": 18,
+    "shadow": "soft",
+    "topbar": "accent-line",
+    "decor": "none",
+    "textGlow": false,
+    "overlay": "scanlines",
+    "heroStyle": "gradient",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "default",
+    "color": "text"
+  },
+  "loader": {
+    "style": "blocks"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.8,
+    "interactive": false
+  },
+  "textSafety": {
+    "scrim": 0.5,
+    "heroScrim": 0.35,
+    "blur": 6,
+    "busy": "medium"
+  },
+  "author": "T3 Skins",
+  "generated": false,
+  "sceneColors": [
+    "#1d224a",
+    "#33257f",
+    "#7b4c95",
+    "#453675"
+  ],
+  "backdrop": {
+    "image": "media/bg.jpg",
+    "position": "50% 50%",
+    "dim": 0.1,
+    "drift": true
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {
+      "img": [
+        2720,
+        1536
+      ],
+      "pos": [
+        0.5,
+        0.5
+      ],
+      "colors": [
+        "#ff4fd8",
+        "#ffb347",
+        "#ffffff"
+      ],
+      "fx": [
+        "grid",
+        "stars",
+        "glows",
+        "meteor"
+      ],
+      "horizon": 0.868,
+      "vanish": 0.735,
+      "sky": 0.55,
+      "stars": 90,
+      "glows": [
+        [
+          0.735,
+          0.62,
+          0.42,
+          0.22
+        ]
+      ]
+    }
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 140,
+    "text": "outrun",
+    "params": {
+      "style": "neon",
+      "font": "Bahnschrift, \"Segoe UI\", sans-serif",
+      "weight": 600,
+      "size": 46,
+      "spacing": 0.38,
+      "upper": true
+    }
+  }
+}

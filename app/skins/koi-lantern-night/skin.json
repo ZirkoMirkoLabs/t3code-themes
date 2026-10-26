@@ -1,0 +1,32 @@
+{
+  "id": "koi-lantern-night",
+  "name": "Koi Lantern Night",
+  "tagline": "lanterns and koi under the moon",
+  "version": 1,
+  "palette": {
+    "bg": "#05080b",
+    "surface": "#1c1b1c",
+    "text": "#f5eae4",
+    "muted": "#b8a397",
+    "accent": "#f2945c",
+    "accent2": "#faea89",
+    "border": "#3f2e24"
+  },
+  "scene": {
+    "kind": "none"
+  },
+  "particles": {
+    "type": "petals",
+    "density": 0.33,
+    "color": "#ffc1d6",
+    "color2": "#ff8fb8"
+  },
+  "shade": 0.15,
+  "plate": {
+    "image": "plate.png",
+    "position": "60% 45%",
+    "parallax": 1,
+    "video": "loop.mp4"
+  },
+  "thumb": "thumb.jpg"
+}

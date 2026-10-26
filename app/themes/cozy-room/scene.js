@@ -28,10 +28,11 @@ W = C.L.W; H = C.L.H; sc = clamp(H / 900, .8, 1.25);
 G.lm = { x0: L.side.right + 8, x1: L.lane.left - 10 }; G.lm.w = G.lm.x1 - G.lm.x0;
 G.rm = { x0: L.lane.right + 10, x1: W - 8 }; G.rm.w = G.rm.x1 - G.rm.x0;
 const ww = clamp(G.rm.w + 190 * sc, 300, 600), wx1 = W - Math.max(44 * sc, G.rm.w * .13);
-G.win = { x0: wx1 - ww, x1: wx1, y0: Math.max(L.top.bottom + 50 * sc, H * .11), y1: Math.round(H * .585) };
-G.deskY = Math.round(L.comp.top + L.comp.height * .32);
-G.shelf = { x0: G.lm.x0 + 22 * sc, x1: G.lm.x1 - 14 * sc, y: Math.round(H * .6) };
-G.neon = { x: (G.lm.x0 + G.lm.x1) / 2 - 8 * sc, y: H * .44 };
+G.docked = L.comp.bottom > H - 110;
+G.deskY = Math.round(G.docked ? L.comp.top + L.comp.height * .32 : H - 22 - 88 * sc);
+G.win = { x0: wx1 - ww, x1: wx1, y0: Math.max(L.top.bottom + 50 * sc, H * .11), y1: Math.round(Math.min(H * .585, G.deskY - 130 * sc)) };
+G.shelf = { x0: G.lm.x0 + 22 * sc, x1: G.lm.x1 - 14 * sc, y: Math.round(Math.min(H * .6, G.deskY - 170 * sc)) };
+G.neon = { x: (G.lm.x0 + G.lm.x1) / 2 - 8 * sc, y: Math.min(H * .44, G.shelf.y - 120 * sc) };
 G.plant = { x: G.lm.x0 + 46 * sc, y: H * .2 };
 G.lamp = { x: W - 58 * sc, y: G.deskY };
 G.rec = { x0: G.rm.x0 + 14 * sc, w: clamp(G.rm.w * .42, 90, 140) };
@@ -712,9 +713,10 @@ const o = {
 sill: { y: g.win.y1 - 2, x0: Math.max(g.win.x0 + 40, L.lane.right + 24), x1: g.win.x1 - 64 * s },
 shelf: { y: g.shelf.y, x0: (g.shelf.bookEnd || g.shelf.x0) + 30 * s, x1: g.shelf.x1 - 46 * s },
 desk: { y: g.deskY + 9 * s, x0: L.side.right + 40, x1: W - 92 * s },
-comp: { y: L.send.bottom + 1, x0: L.comp.left + 50, x1: L.comp.right - 50 },
+comp: { y: L.send.bottom + 1, x0: L.comp.left + Math.max(50, Math.min(360, L.comp.width * .5)), x1: L.comp.right - 50 },
 };
 for (const k in o) o[k].ok = o[k].x1 - o[k].x0 > 30;
+if (!g.docked || L.noComp) o.comp.ok = false;      // centred (floating mid-screen) or no composer at all (wallpaper): no platform, no pawing
 return o;
 }
 const LINKS = { shelf: ['desk'], desk: ['shelf', 'comp', 'sill'], comp: ['desk'], sill: ['desk'] };
@@ -872,10 +874,12 @@ return t > 4.3;
 }),
 paw: () => ({
 start() {
+if ((this.skip = cat.plat !== 'comp')) return;
 this.t = 0; const b = C.L.send; this.bx = b.left + b.width * .4; this.by = b.top + b.height * .5;
 face(this.bx > cat.x ? 1 : -1); sitInit(this, 'sitSide'); cat.lookAt(this.bx, this.by, 2.3); earKick(.45, 2);
 },
 update(dt) {
+if (this.skip) return true;
 const t = (this.t += dt); sitStep(this);
 const rx = (this.bx - cat.x) / (s * cat.dir), ry = (this.by - cat.y) / s, sp = P.sitSide;
 if (t > .55 && t < 2) {
@@ -1362,7 +1366,7 @@ tl.p = null;
 C.on('layout', resize);
 resize();
 function behindGlass() {
-if (layer()) return;
+if (layer() || C.L.noComp) return;
 const c = C.L.comp, r = 18;
 x.save(); x.globalCompositeOperation = 'destination-out'; x.globalAlpha = .84; x.beginPath();
 x.moveTo(c.left + 6 + r, c.top + 6); x.arcTo(c.right - 6, c.top + 6, c.right - 6, c.bottom - 6, r); x.arcTo(c.right - 6, c.bottom - 6, c.left + 6, c.bottom - 6, r);
@@ -1393,7 +1397,7 @@ return { frame(dt) { dt = Math.min(.05, dt); T += dt; update(dt); render(dt); be
     const lane = Z.messages ? R(Z.messages) : rect(comp.left - 12, top.bottom, comp.width + 24, comp.top - top.bottom);
     const send = R(Z.send) || rect(comp.right - 54, comp.bottom - 52, 34, 34);
     const details = R(Z.details);
-    const L = { side, top, lane, comp, send, details, W, H };
+    const L = { side, top, lane, comp, send, details, W, H, noComp: !Z.composer };
     const k = [W, H, side.right, top.bottom, lane.left, lane.right, comp.left, comp.top, comp.right, comp.bottom, send.left, details ? details.left : 0].map(Math.round).join(',');
     C.L = L;
     if (force || k !== key) { key = k; C.emit('layout', L); }

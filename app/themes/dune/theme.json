@@ -1,0 +1,137 @@
+{
+  "format": "t3theme/1",
+  "id": "dune",
+  "name": "Dune",
+  "tagline": "wind over an apricot morning",
+  "category": "Minimal",
+  "tags": [
+    "light",
+    "desert",
+    "minimal",
+    "warm",
+    "sand",
+    "calm"
+  ],
+  "description": "Smooth Sahara ridges under a pale apricot sky. Spindrift streams low across the sand in slow gusts, and haze breathes along the horizon.",
+  "appearance": "light",
+  "palette": {
+    "bg": "#f7efe6",
+    "surface": "#fffaf4",
+    "text": "#2d2219",
+    "muted": "#6c5b4c",
+    "accent": "#a5502b",
+    "accent2": "#d18f52",
+    "border": "#e8dccd",
+    "selection": "#f1cdb3",
+    "codeBg": "#f3e9dd",
+    "codeText": "#2d2219"
+  },
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Bahnschrift, Segoe UI, sans-serif"
+  },
+  "shape": {
+    "radius": 14,
+    "density": "roomy",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.86,
+    "blur": 14,
+    "shadow": "soft",
+    "topbar": "glass",
+    "decor": "none",
+    "textGlow": false,
+    "overlay": "none",
+    "heroStyle": "plain",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "thin",
+    "color": "muted"
+  },
+  "loader": {
+    "style": "pulse"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.75,
+    "interactive": false
+  },
+  "textSafety": {
+    "scrim": 0.45,
+    "heroScrim": 0.3,
+    "blur": 6,
+    "busy": "low"
+  },
+  "author": "T3 Skins",
+  "generated": false,
+  "sceneColors": [
+    "#eac9b4",
+    "#ecc5a8",
+    "#e7c5af",
+    "#ecc7ad"
+  ],
+  "backdrop": {
+    "image": "media/bg.jpg",
+    "position": "50% 50%",
+    "dim": 0,
+    "drift": true
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {
+      "img": [
+        2720,
+        1536
+      ],
+      "pos": [
+        0.5,
+        0.5
+      ],
+      "colors": [
+        "#fff3e6",
+        "#ffd2a8",
+        "#b9875e"
+      ],
+      "fx": [
+        "glows",
+        "mist",
+        "sand"
+      ],
+      "glows": [
+        [
+          0.42,
+          0.42,
+          0.45,
+          0.16
+        ]
+      ],
+      "mistBand": [
+        0.38,
+        0.55
+      ],
+      "mistAlpha": 0.16,
+      "sandBand": [
+        0.6,
+        1
+      ],
+      "sand": 170
+    }
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 140,
+    "text": "open horizon",
+    "params": {
+      "style": "rise",
+      "font": "Bahnschrift, \"Segoe UI\", sans-serif",
+      "weight": 300,
+      "size": 32,
+      "spacing": 0.46,
+      "upper": true
+    }
+  }
+}

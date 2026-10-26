@@ -1,0 +1,134 @@
+{
+  "format": "t3theme/1",
+  "id": "lamplight",
+  "name": "Lamplight",
+  "tagline": "one more chapter before bed",
+  "category": "Cozy",
+  "tags": [
+    "library",
+    "cozy",
+    "warm",
+    "books",
+    "rain",
+    "dark academia"
+  ],
+  "description": "An old library at night: a brass lamp pools warm light over leather spines while rain taps the window. Dust drifts through the beam and the bulb flickers now and then.",
+  "appearance": "dark",
+  "palette": {
+    "bg": "#120d0a",
+    "surface": "#1b1410",
+    "text": "#f2e7d7",
+    "muted": "#b4a38d",
+    "accent": "#e0a458",
+    "accent2": "#b5534a",
+    "border": "#2f251d",
+    "selection": "#4d3820",
+    "codeBg": "#0f0b08",
+    "codeText": "#eadcc6"
+  },
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Georgia, Palatino Linotype, serif"
+  },
+  "shape": {
+    "radius": 8,
+    "density": "normal",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "paper",
+    "glass": 0.92,
+    "blur": 6,
+    "shadow": "soft",
+    "topbar": "glass",
+    "decor": "none",
+    "textGlow": false,
+    "overlay": "grain",
+    "heroStyle": "plain",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "thin",
+    "color": "muted"
+  },
+  "loader": {
+    "style": "pulse"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.75,
+    "interactive": false
+  },
+  "textSafety": {
+    "scrim": 0.55,
+    "heroScrim": 0.4,
+    "blur": 8,
+    "busy": "medium"
+  },
+  "author": "T3 Skins",
+  "generated": false,
+  "sceneColors": [
+    "#161212",
+    "#191614",
+    "#271912",
+    "#2f1a12"
+  ],
+  "backdrop": {
+    "image": "media/bg.jpg",
+    "position": "50% 50%",
+    "dim": 0.2,
+    "drift": true
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {
+      "img": [
+        2720,
+        1536
+      ],
+      "pos": [
+        0.5,
+        0.5
+      ],
+      "colors": [
+        "#ffb866",
+        "#c0583d",
+        "#ffd9a0"
+      ],
+      "fx": [
+        "motes",
+        "glows"
+      ],
+      "cone": [
+        0.64,
+        0.62,
+        0.38
+      ],
+      "motes": 120,
+      "moteAlpha": 0.95,
+      "moteSize": 0.8,
+      "glows": [
+        [
+          0.64,
+          0.47,
+          0.2,
+          0.3,
+          "flicker"
+        ]
+      ]
+    }
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 140,
+    "text": "one more chapter",
+    "params": {
+      "style": "ink",
+      "font": "Georgia, \"Palatino Linotype\", serif",
+      "weight": "italic 400",
+      "size": 36,
+      "spacing": 0.02
+    }
+  }
+}

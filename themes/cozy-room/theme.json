@@ -1,0 +1,31 @@
+{
+  "format": "t3theme/1",
+  "id": "cozy-room",
+  "name": "Cozy Room",
+  "tagline": "a lofi night room, and a cat who supervises",
+  "description": "A rainy night room drawn in code: city window with moonlight, neon sign, desk lamp, string lights and a record player. A black cat lives in it: it walks the desk behind your composer, paws the send button, naps on its cushion and watches you type.",
+  "category": "Cozy",
+  "tags": ["dark", "cozy", "lofi", "cat", "rain", "night", "neon", "interactive"],
+  "author": "T3 Skins",
+  "appearance": "dark",
+  "palette": {
+    "bg": "#140f22", "surface": "#1c1530", "text": "#efeaf8", "muted": "#a89fc2",
+    "accent": "#ff6fb1", "accent2": "#ffc382", "border": "#30284a", "selection": "#7d4a8f",
+    "codeBg": "#0e0a18", "codeText": "#e6def5"
+  },
+  "sceneColors": ["#1b1532", "#1a1543", "#3e1f50", "#5a3a2d", "#2c2650"],
+  "fonts": {
+    "ui": "\"Segoe UI Variable Text\", \"Segoe UI\", system-ui, sans-serif",
+    "mono": "\"Cascadia Code\", \"Cascadia Mono\", Consolas, ui-monospace, monospace",
+    "display": "\"Segoe UI Variable Display\", \"Segoe UI\", system-ui, sans-serif"
+  },
+  "shape": { "radius": 16, "density": "normal", "borderWidth": 1 },
+  "ui": { "surface": "glass", "glass": 0.8, "blur": 18, "shadow": "soft", "topbar": "glass", "decor": "none",
+          "heroStyle": "plain", "overlay": "none", "cursorLight": false, "hideStageArt": true },
+  "icons": { "style": "default", "color": "muted" },
+  "loader": { "style": "pulse" },
+  "motion": { "fps": 30, "resolution": 0.8, "interactive": true },
+  "scene": { "file": "scene.js", "params": { "companion": true, "catEnergy": 0.5, "rain": 0.7, "rays": 0.8, "lights": true } },
+  "welcome": { "file": "welcome.js", "height": 120, "text": "stay cozy" },
+  "textSafety": { "scrim": 0.5, "heroScrim": 0.3, "blur": 6, "busy": "medium" }
+}

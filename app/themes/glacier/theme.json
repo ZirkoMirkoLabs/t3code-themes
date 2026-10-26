@@ -1,0 +1,125 @@
+{
+  "format": "t3theme/1",
+  "id": "glacier",
+  "name": "Glacier",
+  "tagline": "first snow on a frozen lake",
+  "category": "Minimal",
+  "tags": [
+    "light",
+    "winter",
+    "snow",
+    "nordic",
+    "minimal",
+    "calm"
+  ],
+  "description": "A frozen lake at dawn with mist over the ice and birches dusted white. Snow falls in three depths and leans with the wind.",
+  "appearance": "light",
+  "palette": {
+    "bg": "#eef3f6",
+    "surface": "#fbfdfe",
+    "text": "#15212b",
+    "muted": "#52626e",
+    "accent": "#2b6cb0",
+    "accent2": "#5aa6bf",
+    "border": "#d6e0e7",
+    "selection": "#c9def0",
+    "codeBg": "#e8eff4",
+    "codeText": "#182632"
+  },
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Segoe UI, system-ui, sans-serif"
+  },
+  "shape": {
+    "radius": 12,
+    "density": "normal",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.86,
+    "blur": 18,
+    "shadow": "soft",
+    "topbar": "glass",
+    "decor": "none",
+    "textGlow": false,
+    "overlay": "none",
+    "heroStyle": "plain",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "thin",
+    "color": "muted"
+  },
+  "loader": {
+    "style": "pulse"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.75,
+    "interactive": false
+  },
+  "textSafety": {
+    "scrim": 0.45,
+    "heroScrim": 0.3,
+    "blur": 6,
+    "busy": "low"
+  },
+  "author": "T3 Skins",
+  "generated": false,
+  "sceneColors": [
+    "#ced5df",
+    "#e6e9ed",
+    "#cdd2dd",
+    "#a0aab8"
+  ],
+  "backdrop": {
+    "image": "media/bg.jpg",
+    "position": "50% 50%",
+    "dim": 0,
+    "drift": true
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {
+      "img": [
+        2720,
+        1536
+      ],
+      "pos": [
+        0.5,
+        0.5
+      ],
+      "colors": [
+        "#ffffff",
+        "#dbe9f3",
+        "#ffffff"
+      ],
+      "fx": [
+        "mist",
+        "snow"
+      ],
+      "mistBand": [
+        0.42,
+        0.7
+      ],
+      "mistAlpha": 0.22,
+      "snow": 170,
+      "wind": 3,
+      "snowColor": "#a9bccb"
+    }
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 140,
+    "text": "first light",
+    "params": {
+      "style": "rise",
+      "font": "\"Segoe UI\", system-ui, sans-serif",
+      "weight": 300,
+      "size": 40,
+      "spacing": 0.2
+    }
+  }
+}

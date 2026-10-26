@@ -70,7 +70,10 @@
         var getCtx = canvas.getContext.bind(canvas);
         canvas.getContext = function (kind, opts) { var c = getCtx(kind, opts); if (kind === '2d') ctx2d = c; return c; };
         api = { canvas: canvas, width: m.width, height: m.height, dpr: m.dpr, palette: m.palette, params: m.params || {}, text: m.text || '',
-          kind: m.kind, motion: m.motion, light: !!m.light, backdrop: !!m.backdrop, seed: m.seed, zones: m.zones || [], zoneCount: 0, t: 0, preview: !!m.preview,
+          kind: m.kind, layer: m.layer === 'companion' ? 'companion' : 'scene', motion: m.motion, light: !!m.light, backdrop: !!m.backdrop, seed: m.seed, zones: m.zones || [], zoneCount: 0, t: 0, preview: !!m.preview,
+          ui: {},   // live UI state from the host: typing, sent, working (facts only, never content)
+          // The only thing a scene may ask of the page: a cosmetic flag on a known element ("paw" = the send button).
+          signal: function (name, on) { name = String(name); if (/^[a-z]{1,16}$/.test(name)) postMessage({ type: 'signal', name: name, on: !!on }); },
           pointer: { x: -1, y: -1, down: false, overUI: true, inside: false },
           random: rand, noise: noise2, hash: hash2, rgb: hex, hex: toHex,
           rgba: function (c, a) { var v = hex(c); return 'rgba(' + v[0] + ',' + v[1] + ',' + v[2] + ',' + a + ')'; },
@@ -115,6 +118,9 @@
       } else if (m.type === 'pointer') {
         var p = api.pointer; p.x = m.x; p.y = m.y; p.overUI = !!m.overUI; p.inside = !!m.inside; if (m.kind === 'down') p.down = true; if (m.kind === 'up') p.down = false;
         try { if (inst.pointer) inst.pointer({ kind: m.kind, x: m.x, y: m.y, overUI: !!m.overUI, down: p.down }); } catch (err) { fail('pointer', err); }
+      } else if (m.type === 'ui') {
+        var nm = String(m.name || '').slice(0, 16); api.ui[nm] = m.value;
+        try { if (inst.ui) inst.ui({ name: nm, value: m.value }); } catch (err) { fail('ui', err); }
       } else if (m.type === 'run') {
         fpsCap = bounded(m.fps, 1, 60, fpsCap); if (m.speed != null) speed = bounded(m.speed, 0, 4, speed); api.motion = m.motion || api.motion; setRun(!!m.on);
       } else if (m.type === 'degrade') {
@@ -157,7 +163,7 @@
   var SHIM = workerShim.toString();
 
   /* ---------- host side (T3 page) ---------- */
-  // create({ code, kind, palette, params, text, light, motion, fps, speed, dpr, run, zones, preview, onStatus, budgetMs })
+  // create({ code, kind, layer, palette, params, text, light, motion, fps, speed, dpr, run, zones, preview, onStatus, onSignal, budgetMs })
   function create(o) {
     o = Object.assign({}, o);
     var frame = document.createElement('iframe'), booted = false;
@@ -195,7 +201,8 @@
             else { send({ type: 'kill' }); c.forcedStill = true; clearInterval(dog); status('slow', 'scene too heavy: showing a still frame'); }
           }
         } else c.slowBeats = 0;
-      } else if (m.type === 'error') fail((m.where ? m.where + ': ' : '') + m.msg);
+      } else if (m.type === 'signal') { if (o.onSignal) try { o.onSignal(String(m.name).slice(0, 16), !!m.on); } catch (e) {} }
+      else if (m.type === 'error') fail((m.where ? m.where + ': ' : '') + m.msg);
       else if (m.type === 'dead') fail(m.reason);
     }
     function syncRun() { post({ type: 'run', on: allowed(), fps: o.fps, speed: o.speed, motion: o.motion }); }
@@ -204,7 +211,7 @@
       booted = true;
       send({ type: 'init', shim: SHIM, code: String(o.code || ''), kind: o.kind || 'scene', palette: o.palette || {}, params: o.params || {}, text: o.text || '',
         light: !!o.light, backdrop: !!o.backdrop, motion: o.motion || 'live', fps: o.fps || 30, speed: o.speed, dpr: o.dpr || 1, width: o.width || 2, height: o.height || 2,
-        run: allowed(), zones: o.zones || [], seed: o.seed != null ? o.seed : (Math.random() * 4294967295) >>> 0, t0: o.t0 || 0, preview: !!o.preview });
+        run: allowed(), zones: o.zones || [], layer: o.layer || 'scene', seed: o.seed != null ? o.seed : (Math.random() * 4294967295) >>> 0, t0: o.t0 || 0, preview: !!o.preview });
     }
     window.addEventListener('message', onMsg); frame.addEventListener('load', onLoad);
     document.addEventListener('visibilitychange', syncRun);
@@ -215,6 +222,7 @@
     c.resize = function (w, h, dpr) { o.width = w; o.height = h; if (dpr != null) o.dpr = dpr; post({ type: 'resize', width: w, height: h, dpr: o.dpr }); };
     c.zones = function (z) { o.zones = z; post({ type: 'zones', zones: z }); };
     c.pointer = function (p) { post(p); };
+    c.ui = function (name, value) { post({ type: 'ui', name: name, value: value }); };
     c.destroy = release;
     return c;
   }

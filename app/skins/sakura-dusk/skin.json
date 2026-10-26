@@ -1,0 +1,39 @@
+{
+  "id": "sakura-dusk",
+  "name": "Sakura Dusk",
+  "tagline": "petals at golden hour",
+  "palette": {
+    "bg": "#1a0b1f",
+    "surface": "#2a1430",
+    "text": "#fff0f6",
+    "muted": "#d6a9c2",
+    "accent": "#ff7eb6",
+    "accent2": "#ffc6a8",
+    "border": "#4e2a4f"
+  },
+  "scene": {
+    "kind": "dusk",
+    "colors": [
+      "#160920",
+      "#7a2e6e",
+      "#ff8fb8",
+      "#ffc9a0"
+    ],
+    "body": [
+      0.62,
+      0.2,
+      0.13,
+      1
+    ],
+    "stars": 0.6
+  },
+  "particles": {
+    "type": "petals",
+    "density": 0.55,
+    "color": "#ffb3cf",
+    "color2": "#ff86b4"
+  },
+  "shade": 0.3,
+  "version": 1,
+  "thumb": "thumb.jpg"
+}

@@ -1,0 +1,125 @@
+{
+  "format": "t3theme/1",
+  "id": "hanami",
+  "name": "Hanami",
+  "tagline": "blossoms against a spring sky",
+  "category": "Seasonal",
+  "tags": [
+    "light",
+    "sakura",
+    "spring",
+    "pastel",
+    "petals",
+    "video"
+  ],
+  "description": "Cherry branches sway against a pale spring sky. Petals drift down in loose flurries; move your pointer to send a gust through them.",
+  "appearance": "light",
+  "palette": {
+    "bg": "#f6f3f6",
+    "surface": "#fffcfd",
+    "text": "#2a1f27",
+    "muted": "#6a5763",
+    "accent": "#c0447a",
+    "accent2": "#5f93c4",
+    "border": "#eadde5",
+    "selection": "#f5c9da",
+    "codeBg": "#f3edf1",
+    "codeText": "#2a1f27"
+  },
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Palatino Linotype, Georgia, serif"
+  },
+  "shape": {
+    "radius": 16,
+    "density": "normal",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.86,
+    "blur": 16,
+    "shadow": "soft",
+    "topbar": "glass",
+    "decor": "none",
+    "textGlow": false,
+    "overlay": "none",
+    "heroStyle": "plain",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "thin",
+    "color": "muted"
+  },
+  "loader": {
+    "style": "pulse"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.75,
+    "interactive": true
+  },
+  "textSafety": {
+    "scrim": 0.45,
+    "heroScrim": 0.3,
+    "blur": 6,
+    "busy": "low"
+  },
+  "author": "T3 Skins",
+  "generated": false,
+  "sceneColors": [
+    "#c4c1cb",
+    "#aecbdf",
+    "#c6cbd6",
+    "#ccb1b1"
+  ],
+  "backdrop": {
+    "image": "media/bg.jpg",
+    "video": "media/loop.mp4",
+    "position": "50% 50%",
+    "dim": 0,
+    "drift": false
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {
+      "img": [
+        2720,
+        1536
+      ],
+      "pos": [
+        0.5,
+        0.5
+      ],
+      "colors": [
+        "#ffffff",
+        "#ffd6e4",
+        "#ffffff",
+        "#f4a9c4",
+        "#f9cfdc"
+      ],
+      "fx": [
+        "petals"
+      ],
+      "petals": 30,
+      "from": [
+        1,
+        0
+      ],
+      "wind": 18
+    }
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 140,
+    "text": "spring, again",
+    "params": {
+      "style": "ink",
+      "font": "\"Palatino Linotype\", Georgia, serif",
+      "weight": "italic 400",
+      "size": 40,
+      "spacing": 0.04
+    }
+  }
+}

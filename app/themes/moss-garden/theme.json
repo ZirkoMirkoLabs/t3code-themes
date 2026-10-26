@@ -1,0 +1,138 @@
+{
+  "format": "t3theme/1",
+  "id": "moss-garden",
+  "name": "Moss Garden",
+  "tagline": "morning mist in a Kyoto garden",
+  "category": "Nature",
+  "tags": [
+    "light",
+    "zen",
+    "japan",
+    "garden",
+    "mist",
+    "calm",
+    "video"
+  ],
+  "description": "Velvet moss, raked gravel and a single red maple in early mist. The mist drifts in the video loop, light falls in soft rays and a maple leaf turns as it falls.",
+  "appearance": "light",
+  "palette": {
+    "bg": "#f3f2ec",
+    "surface": "#fbfaf6",
+    "text": "#1e2921",
+    "muted": "#566255",
+    "accent": "#2f6b4f",
+    "accent2": "#b5452f",
+    "border": "#dcdccf",
+    "selection": "#cfe3d3",
+    "codeBg": "#ecebe3",
+    "codeText": "#24302a"
+  },
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Palatino Linotype, Georgia, serif"
+  },
+  "shape": {
+    "radius": 10,
+    "density": "normal",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "paper",
+    "glass": 0.9,
+    "blur": 10,
+    "shadow": "soft",
+    "topbar": "glass",
+    "decor": "none",
+    "textGlow": false,
+    "overlay": "grain",
+    "heroStyle": "plain",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "thin",
+    "color": "muted"
+  },
+  "loader": {
+    "style": "pulse"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.75,
+    "interactive": true
+  },
+  "textSafety": {
+    "scrim": 0.5,
+    "heroScrim": 0.35,
+    "blur": 8,
+    "busy": "medium"
+  },
+  "author": "T3 Skins",
+  "generated": false,
+  "sceneColors": [
+    "#e2dedc",
+    "#a8a79b",
+    "#b7a69c",
+    "#a38782"
+  ],
+  "backdrop": {
+    "image": "media/bg.jpg",
+    "video": "media/loop.mp4",
+    "position": "50% 50%",
+    "dim": 0,
+    "drift": false
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {
+      "img": [
+        2720,
+        1536
+      ],
+      "pos": [
+        0.5,
+        0.5
+      ],
+      "colors": [
+        "#ffffff",
+        "#fff1d6",
+        "#ffffff",
+        "#b5452f",
+        "#d0603a"
+      ],
+      "fx": [
+        "mist",
+        "leaves",
+        "rays"
+      ],
+      "mistBand": [
+        0.45,
+        0.8
+      ],
+      "mistAlpha": 0.2,
+      "petals": 6,
+      "from": [
+        0.78,
+        0.3
+      ],
+      "wind": 10,
+      "raysFrom": [
+        0.12,
+        -0.25
+      ],
+      "rayAlpha": 0.08
+    }
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 140,
+    "text": "stillness",
+    "params": {
+      "style": "ink",
+      "font": "\"Palatino Linotype\", Georgia, serif",
+      "weight": 400,
+      "size": 40,
+      "spacing": 0.14
+    }
+  }
+}

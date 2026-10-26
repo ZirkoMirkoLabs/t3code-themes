@@ -1,6 +1,6 @@
 # Publishing guide
 
-This folder is the clean copy for publishing. It holds only the 10 theme folders, the README and the licence. Nothing in it comes from the launcher, the key store, settings or any chat.
+This folder is the clean copy for publishing. It holds the player and its themes, the app in `app/` (made by `scripts/export_app.py`), the README and the licence. Nothing in it comes from the launcher, the key store, settings or any chat.
 
 ## 1. Check before every push
 
@@ -12,7 +12,7 @@ grep -rnIiE "sk-[a-z0-9]{10}|ghp_|AIza|bearer |api[_-]?key|secret|password|token
 
 Also look at every `thumb.jpg`: it must show only the scene, never the app, a sidebar or chat titles.
 
-Add new themes by copying only `theme.json`, `scene.js`, `welcome.js` and `thumb.jpg`. Never copy a whole theme folder from the working project: it can hold `media/`, receipts or reports.
+Add themes by editing the lists in `scripts/export_app.py` and re-running it. Never copy a whole theme folder from the working project: it can hold `media/`, receipts or reports.
 
 ## 2. Your own repo (done)
 
@@ -39,6 +39,8 @@ If they say no, nothing is lost: the repo stays yours, and you can share it on i
 - launcher code, without `.profile/` (keys, settings, session) or `node_modules/`;
 - the runtime and theme studio, without thread briefs;
 - the playground, rewritten with sample projects;
-- the 11 themes (4 files each).
+- the 15 themes and 2 skins, allow-listed files only (no receipts, plans or source videos).
+
+The same script refreshes the front-page player's `themes/` and `player/sandbox.js`.
 
 It leaves out the dashboard (it reads local T3 threads), the AI image skins and backups. Re-run the export, the check in step 1 and the tests in `app/README.md` before every push.

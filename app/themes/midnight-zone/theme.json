@@ -1,0 +1,127 @@
+{
+  "format": "t3theme/1",
+  "id": "midnight-zone",
+  "name": "Midnight Zone",
+  "tagline": "bioluminescence far below the surface",
+  "category": "Ocean",
+  "tags": [
+    "ocean",
+    "jellyfish",
+    "deep",
+    "glow",
+    "interactive",
+    "video"
+  ],
+  "description": "Jellyfish pulse and drift through dark water under faint rays from a far-off surface. Marine snow floats past, and a click sends a ripple through the water.",
+  "appearance": "dark",
+  "palette": {
+    "bg": "#041016",
+    "surface": "#0a1a22",
+    "text": "#e1f1f4",
+    "muted": "#8faab2",
+    "accent": "#6fd6ff",
+    "accent2": "#b49bff",
+    "border": "#17303a",
+    "selection": "#134457",
+    "codeBg": "#030d12",
+    "codeText": "#d3e9ee"
+  },
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Segoe UI, system-ui, sans-serif"
+  },
+  "shape": {
+    "radius": 16,
+    "density": "normal",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.82,
+    "blur": 20,
+    "shadow": "soft",
+    "topbar": "glass",
+    "decor": "none",
+    "textGlow": false,
+    "overlay": "none",
+    "heroStyle": "plain",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "thin",
+    "color": "text"
+  },
+  "loader": {
+    "style": "pulse"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.75,
+    "interactive": true
+  },
+  "textSafety": {
+    "scrim": 0.5,
+    "heroScrim": 0.35,
+    "blur": 8,
+    "busy": "medium"
+  },
+  "author": "T3 Skins",
+  "generated": false,
+  "sceneColors": [
+    "#0f3144",
+    "#041423",
+    "#08293a",
+    "#0c2e45"
+  ],
+  "backdrop": {
+    "image": "media/bg.jpg",
+    "video": "media/loop.mp4",
+    "position": "50% 50%",
+    "dim": 0.15,
+    "drift": false
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {
+      "img": [
+        2720,
+        1536
+      ],
+      "pos": [
+        0.5,
+        0.5
+      ],
+      "colors": [
+        "#7fe3ff",
+        "#b49bff",
+        "#bfefff"
+      ],
+      "fx": [
+        "motes",
+        "rays",
+        "ripples"
+      ],
+      "motes": 120,
+      "moteSize": 0.8,
+      "moteAlpha": 0.6,
+      "raysFrom": [
+        0.55,
+        -0.15
+      ],
+      "rayAlpha": 0.045
+    }
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 140,
+    "text": "into the deep",
+    "params": {
+      "style": "rise",
+      "font": "\"Segoe UI\", system-ui, sans-serif",
+      "weight": 300,
+      "size": 38,
+      "spacing": 0.16
+    }
+  }
+}

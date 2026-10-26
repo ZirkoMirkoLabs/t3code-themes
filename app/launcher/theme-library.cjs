@@ -11,8 +11,8 @@ const templatesRoot = path.join(root, 'runtime', 'templates');
 // Legacy: early code-only themes kept for compatibility, listed only under Themes > Library > Legacy.
 const LEGACY = [];
 const basesRoot = path.join(templatesRoot, 'bases');
-const BASES = ['toon-town', 'event-horizon', 'phosphor', 'rainy-cafe', 'playground'];
-const BUILT_IN = ['cozy-room', 'rooftop-dusk', 'koi-pond', 'lantern-sky', 'great-wave', 'cozy-cabin', 'ridgeline', 'meadow-breeze', 'frutiger-aero', 'blue-tide', 'silk-flow'];
+const BASES = ['toon-town', 'event-horizon', 'phosphor'];
+const BUILT_IN = ['cozy-room', 'meadow-breeze', 'koi-pond', 'portal-lab', 'playground', 'rainy-cafe', 'silk-flow', 'moss-garden', 'hanami', 'midnight-zone', 'deep-field', 'glacier', 'lamplight', 'dune', 'outrun'];
 
 // Templates: runtime/templates/<name>.<kind>.js, or the scene/welcome of a built-in theme by id.
 function templates(name, kind) {

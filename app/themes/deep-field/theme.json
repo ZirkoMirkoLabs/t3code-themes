@@ -1,0 +1,130 @@
+{
+  "format": "t3theme/1",
+  "id": "deep-field",
+  "name": "Deep Field",
+  "tagline": "a gas giant at the edge of the frame",
+  "category": "Space",
+  "tags": [
+    "space",
+    "planet",
+    "stars",
+    "nebula",
+    "minimal",
+    "parallax"
+  ],
+  "description": "A gas giant hangs at the corner of a black sky with a faint nebula behind it. Thousands of stars drift on parallax layers that follow your pointer, with the occasional meteor.",
+  "appearance": "dark",
+  "palette": {
+    "bg": "#08090c",
+    "surface": "#111318",
+    "text": "#ece9e3",
+    "muted": "#9c988f",
+    "accent": "#e8b86b",
+    "accent2": "#7fb3c9",
+    "border": "#24262c",
+    "selection": "#4a3b22",
+    "codeBg": "#07080a",
+    "codeText": "#e2ded6"
+  },
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Bahnschrift, Segoe UI, sans-serif"
+  },
+  "shape": {
+    "radius": 10,
+    "density": "normal",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.86,
+    "blur": 16,
+    "shadow": "soft",
+    "topbar": "glass",
+    "decor": "none",
+    "textGlow": false,
+    "overlay": "none",
+    "heroStyle": "plain",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "thin",
+    "color": "text"
+  },
+  "loader": {
+    "style": "orbit"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.8,
+    "interactive": true
+  },
+  "textSafety": {
+    "scrim": 0.45,
+    "heroScrim": 0.3,
+    "blur": 6,
+    "busy": "low"
+  },
+  "author": "T3 Skins",
+  "generated": false,
+  "sceneColors": [
+    "#080d12",
+    "#090a0a",
+    "#2c3237",
+    "#182021"
+  ],
+  "backdrop": {
+    "image": "media/bg.jpg",
+    "position": "50% 50%",
+    "dim": 0.1,
+    "drift": true
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {
+      "img": [
+        2720,
+        1536
+      ],
+      "pos": [
+        0.5,
+        0.5
+      ],
+      "colors": [
+        "#e8b86b",
+        "#7fb3c9",
+        "#c9d6e0"
+      ],
+      "fx": [
+        "stars",
+        "meteor",
+        "motes"
+      ],
+      "sky": 1,
+      "stars": 260,
+      "parallax": 1.2,
+      "starDrift": 0.0015,
+      "occlude": [
+        0.81,
+        0.77,
+        0.44
+      ],
+      "motes": 40,
+      "moteAlpha": 0.25
+    }
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 140,
+    "text": "deep field",
+    "params": {
+      "style": "stars",
+      "font": "Bahnschrift, \"Segoe UI\", sans-serif",
+      "weight": 300,
+      "size": 38,
+      "spacing": 0.42,
+      "upper": true
+    }
+  }
+}

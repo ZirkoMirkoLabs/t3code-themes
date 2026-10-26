@@ -1,0 +1,87 @@
+{
+  "name": "Portal Lab",
+  "tagline": "interdimensional by default",
+  "description": "A garage lab on a blueprint grid with a wobbling green portal, goo drips and cartoon outlines.",
+  "category": "Sci-fi",
+  "tags": [
+    "portal",
+    "sci-fi",
+    "cartoon",
+    "green",
+    "lab"
+  ],
+  "appearance": "dark",
+  "palette": {
+    "bg": "#0a1714",
+    "surface": "#10221e",
+    "text": "#eafbe6",
+    "muted": "#a6cbb9",
+    "accent": "#9be15d",
+    "accent2": "#3fd0d4",
+    "border": "#23413a",
+    "selection": "#9be15d",
+    "codeBg": "#06110e",
+    "codeText": "#e2f7dc"
+  },
+  "sceneColors": [
+    "#0a1714",
+    "#e9ffd0",
+    "#8fe04a",
+    "#2f9e3a",
+    "#b6f26a",
+    "#16302a"
+  ],
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "display": "Comic Sans MS, Trebuchet MS, sans-serif"
+  },
+  "shape": {
+    "radius": 14,
+    "density": "normal",
+    "borderWidth": 2
+  },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.86,
+    "blur": 10,
+    "shadow": "hard",
+    "topbar": "solid",
+    "decor": "none",
+    "heroStyle": "outline",
+    "overlay": "vignette"
+  },
+  "icons": {
+    "style": "cartoon",
+    "color": "accent",
+    "custom": {
+      "settings": "icons/settings.svg"
+    }
+  },
+  "loader": {
+    "style": "orbit"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.8,
+    "interactive": true
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {}
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 140,
+    "text": "Portal Lab"
+  },
+  "textSafety": {
+    "scrim": 0.55,
+    "heroScrim": 0.3,
+    "blur": 4,
+    "busy": "medium"
+  },
+  "generated": false,
+  "author": "T3 Skins",
+  "format": "t3theme/1",
+  "id": "portal-lab"
+}
