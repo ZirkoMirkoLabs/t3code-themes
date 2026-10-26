@@ -1,0 +1,32 @@
+{
+  "format": "t3theme/1",
+  "id": "phosphor",
+  "name": "Phosphor",
+  "tagline": "green screen, warm heart",
+  "description": "A 1983 terminal: drifting ASCII fields, a spinning ASCII donut in the free space, characters that scramble under your cursor. Monospace everywhere, square corners, phosphor glow and scanlines.",
+  "category": "Retro",
+  "tags": ["dark", "ascii", "terminal", "crt", "green", "hacker", "80s"],
+  "author": "T3 Skins",
+  "appearance": "dark",
+  "palette": {
+    "bg": "#020a04", "surface": "#04140a", "text": "#a6ffb8", "muted": "#5fcf78",
+    "accent": "#39ff6a", "accent2": "#ffc53d", "border": "#12401f", "selection": "#39ff6a",
+    "codeBg": "#010603", "codeText": "#b8ffc6"
+  },
+  "sceneColors": ["#020a04", "#39ff6a", "#ffc53d", "#0f3d1c"],
+  "fonts": {
+    "ui": "Cascadia Mono, Consolas, ui-monospace, monospace",
+    "mono": "Cascadia Mono, Consolas, ui-monospace, monospace",
+    "display": "VT323, Cascadia Mono, Consolas, monospace",
+    "files": [{ "family": "VT323", "file": "fonts/vt323.woff2", "weight": "400" }]
+  },
+  "shape": { "radius": 0, "density": "compact", "borderWidth": 1 },
+  "ui": { "surface": "solid", "glass": 0.94, "blur": 0, "shadow": "glow", "topbar": "accent-line", "decor": "brackets",
+          "textGlow": true, "heroStyle": "glow", "overlay": "scanlines", "cursorLight": false, "hideStageArt": true, "uppercase": true },
+  "icons": { "style": "pixel", "color": "accent" },
+  "loader": { "style": "braille" },
+  "motion": { "fps": 20, "resolution": 1, "interactive": true },
+  "scene": { "file": "scene.js", "params": { "donut": true, "rain": 14 } },
+  "welcome": { "file": "welcome.js", "height": 140, "text": "PHOSPHOR" },
+  "textSafety": { "scrim": 0.6, "heroScrim": 0.4, "blur": 0, "busy": "high" }
+}

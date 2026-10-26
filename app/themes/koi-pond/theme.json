@@ -1,0 +1,32 @@
+{
+  "format": "t3theme/1",
+  "id": "koi-pond",
+  "name": "Koi Pond",
+  "tagline": "still water, slow thoughts",
+  "description": "A top-down zen koi pond: deep teal water with drifting caustic light, koi gliding on slow curving paths, lily pads with pink lotus and cherry petals on the surface. Touch the water to make ripples.",
+  "category": "Nature",
+  "tags": ["dark", "zen", "koi", "pond", "water", "lotus", "calm", "interactive"],
+  "author": "T3 Skins",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#061513", "surface": "#0b201d", "text": "#e8f3ee", "muted": "#9fc0b6",
+    "accent": "#ff8a45", "accent2": "#f3a6c4", "border": "#1f3b36", "selection": "#ff8a45",
+    "codeBg": "#04100e", "codeText": "#d9ece5"
+  },
+  "sceneColors": ["#03201d", "#0e4c44", "#bff5e4", "#ff7a2f", "#f6efe4", "#15110f", "#2f6b3a", "#f4a3c4"],
+  "fonts": {
+    "ui": "\"Segoe UI\", system-ui, sans-serif",
+    "mono": "\"Cascadia Mono\", Consolas, monospace",
+    "display": "\"Palatino Linotype\", Georgia, serif"
+  },
+  "shape": { "radius": 12, "density": "normal", "borderWidth": 1 },
+  "ui": { "surface": "glass", "glass": 0.78, "blur": 14, "shadow": "soft", "topbar": "glass", "decor": "none",
+          "textGlow": false, "overlay": "none", "heroStyle": "glow", "uppercase": false },
+  "icons": { "style": "thin", "color": "muted" },
+  "loader": { "style": "pulse" },
+  "motion": { "fps": 30, "resolution": 0.75, "interactive": true },
+  "scene": { "file": "scene.js", "params": { "koi": 6, "pads": 6, "petals": 16 } },
+  "welcome": { "file": "welcome.js", "height": 140, "text": "Koi Pond" },
+  "textSafety": { "scrim": 0.5, "heroScrim": 0.3, "blur": 4, "busy": "medium" }
+}

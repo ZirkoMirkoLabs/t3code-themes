@@ -1,0 +1,251 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Skin Studio</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: file:">
+<style>
+:root{--bg:#141416;--panel:#1c1c20;--panel2:#19191c;--line:#36363d;--text:#eeeeef;--muted:#b1b1ba;--acc:#a7b7ee;--on-acc:#10121a;--acc2:#a7b7ee;--code:#101012;--warn:#ffb86b;--ok:#5ef2a6;--bad:#ff7b8f}
+*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:var(--bg);color:var(--text);font:13px/1.5 var(--studio-font,-apple-system,'Segoe UI',sans-serif);height:100vh;display:flex;flex-direction:column}
+header{display:flex;align-items:center;gap:16px;padding:14px 20px 0}
+h1{font-size:18px;margin:0}
+nav{display:flex;gap:4px;margin-left:auto}nav button{padding:7px 14px;border-radius:9px}nav button[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+main{display:grid;grid-template-columns:400px 1fr;gap:18px;padding:14px 20px 20px;flex:1;min-height:0}
+form{display:grid;gap:11px;align-content:start;overflow:auto;padding:2px 6px 2px 2px}
+.lead{margin:0;color:var(--muted)}
+label{display:grid;gap:5px;color:var(--muted);font-size:12px}
+input,textarea,select{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit}
+textarea{min-height:84px;resize:vertical}:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row3{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px}.chk{display:flex;gap:8px;align-items:center;color:var(--text)}.chk input{width:auto}
+button{cursor:pointer;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--text);padding:9px 13px;font:inherit;font-weight:600}
+button.primary{background:var(--acc);border:0;color:var(--on-acc);padding:11px 14px}button:disabled{opacity:.5;cursor:default}
+button.small{padding:5px 9px;font-size:12px;font-weight:500}
+.file{display:flex;gap:8px;align-items:center}.file span{flex:1;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:rtl;text-align:left}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chips button{padding:4px 9px;font-weight:500;font-size:12px}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:4px}
+.seg button{border:0;background:transparent;padding:7px 4px;font-size:12px;font-weight:600;color:var(--muted)}.seg button[aria-pressed=true]{background:var(--panel);color:var(--text);box-shadow:inset 0 0 0 1px var(--acc)}
+.box{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;gap:8px}
+.est{font-size:12px;color:var(--muted);display:grid;gap:3px}.est b{color:var(--text);font-weight:600}.est .tot{color:var(--text);border-top:1px solid var(--line);padding-top:5px;margin-top:2px}
+.badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.03em;padding:1px 6px;border-radius:99px;border:1px solid var(--line);color:var(--muted);vertical-align:1px}
+.badge.ok{color:var(--ok);border-color:#2f6b52}.badge.warn{color:var(--warn);border-color:#6b532f}.badge.bad{color:var(--bad);border-color:#6b2f3a}
+section.run{display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;min-height:0}
+.bar{height:8px;border-radius:9px;background:var(--panel);overflow:hidden;border:1px solid var(--line)}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width .5s}
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
+#log{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;font:12px/1.6 ui-monospace,Consolas,monospace;white-space:pre-wrap;margin:0}
+#log .done{color:var(--ok)}#log .pending,#log .skipped,#log .fallback{color:var(--warn)}#log .failed,#log .error{color:var(--bad)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.hint{color:var(--muted);font-size:12px;margin:0}
+#report{display:none;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;white-space:pre-wrap;font:12px/1.55 ui-monospace,Consolas,monospace;max-height:38vh;overflow:auto}
+/* providers */
+#providers{padding:14px 20px 24px;overflow:auto;flex:1}
+#providers .intro{max-width:900px;color:var(--muted);margin:0 0 14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 14px;display:grid;gap:8px;align-content:start}
+.card h3{margin:0;font-size:14px;display:flex;align-items:center;gap:8px}.card h3 .state{margin-left:auto}
+.card p{margin:0;color:var(--muted);font-size:12px}.card .routes{display:flex;flex-wrap:wrap;gap:5px}
+.card .keyrow{display:flex;gap:6px}.card .keyrow input{flex:1;font-family:ui-monospace,Consolas,monospace;font-size:12px}
+.card .btns{display:flex;gap:6px;flex-wrap:wrap}.card .msg{font-size:12px;min-height:1.2em}.card .msg.ok{color:var(--ok)}.card .msg.bad{color:var(--bad)}
+.card a{color:var(--acc2);cursor:pointer;text-decoration:underline;font-size:12px}
+
+/* ---- polish layer: rhythm, depth, focus and motion (follows the active theme's tokens) ---- */
+:root{--r:calc(var(--studio-radius,10px));--ease:cubic-bezier(.2,.8,.2,1);--field:color-mix(in srgb,var(--panel) 80%,var(--bg));--line-soft:color-mix(in srgb,var(--line) 70%,transparent)}
+body{-webkit-font-smoothing:antialiased}
+header{padding:16px 22px 14px;border-bottom:1px solid var(--line-soft)}
+h1{display:flex;align-items:center;gap:11px;font-size:18px;font-weight:650;letter-spacing:-.01em}
+h1 .mark{display:grid;place-items:center;width:32px;height:32px;border-radius:calc(var(--r) - 1px);font-size:15px;color:var(--on-acc);background:linear-gradient(135deg,var(--acc),color-mix(in srgb,var(--acc2) 70%,var(--acc)));box-shadow:0 6px 16px -8px var(--acc),inset 0 1px 0 rgb(255 255 255 / 28%)}
+h1 small{display:block;font-size:11.5px;font-weight:400;color:var(--muted);letter-spacing:0}
+nav{gap:2px;padding:3px;border-radius:calc(var(--r) + 3px);background:color-mix(in srgb,var(--text) 6%,transparent);border:1px solid var(--line-soft)}
+nav button{border:0;background:transparent;color:var(--muted);padding:6px 14px;border-radius:var(--r);font-weight:600}
+nav button:hover{color:var(--text);background:transparent}
+nav button[aria-selected=true]{background:var(--panel);color:var(--text);border:0;box-shadow:0 1px 3px rgb(0 0 0 / 22%),inset 0 0 0 1px var(--line-soft)}
+main{gap:22px;padding:18px 22px 22px}
+form{gap:14px}
+.lead{font-size:12.5px;line-height:1.55}
+label{font-size:11.5px;font-weight:600;letter-spacing:.02em}
+input,textarea,select{background:var(--field);border-radius:var(--r);padding:9px 11px;transition:border-color .18s var(--ease),box-shadow .18s var(--ease)}
+input:hover,textarea:hover,select:hover{border-color:color-mix(in srgb,var(--text) 22%,var(--line))}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 24%,transparent)}
+textarea{font-size:13.5px;line-height:1.5}
+button{border-radius:var(--r);transition:background-color .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease)}
+button:hover:not(:disabled){border-color:color-mix(in srgb,var(--acc) 65%,var(--line));background:color-mix(in srgb,var(--acc) 8%,var(--panel))}
+button:active:not(:disabled){transform:translateY(1px)}
+button.primary{padding:12px 16px;font-size:13.5px;background:var(--acc);box-shadow:0 10px 24px -12px var(--acc),inset 0 1px 0 rgb(255 255 255 / 25%)}
+button.primary:hover:not(:disabled){background:var(--acc);transform:translateY(-1px);box-shadow:0 14px 28px -10px var(--acc),inset 0 1px 0 rgb(255 255 255 / 30%)}
+.chips button{border-radius:999px;background:transparent;color:var(--muted)}
+.chips button:hover:not(:disabled){color:var(--text)}
+.seg{border-radius:calc(var(--r) + 3px);padding:3px;background:color-mix(in srgb,var(--text) 6%,transparent);border-color:var(--line-soft)}
+.seg button{border-radius:var(--r)}
+.seg button:hover:not(:disabled){background:transparent;color:var(--text)}
+.seg button[aria-pressed=true]{background:var(--panel);color:var(--text);box-shadow:0 1px 3px rgb(0 0 0 / 22%),inset 0 0 0 1px color-mix(in srgb,var(--acc) 70%,transparent)}
+.box{border-radius:calc(var(--r) + 2px);padding:12px 14px;border:1px solid transparent;background:linear-gradient(var(--panel2),var(--panel2)) padding-box,linear-gradient(130deg,color-mix(in srgb,var(--acc) 50%,transparent),var(--line) 60%) border-box}
+.chk{font-weight:500;letter-spacing:0;font-size:12.5px}
+.chk input{appearance:none;position:relative;width:30px;height:18px;border-radius:999px;padding:0;border:1px solid var(--line);background:color-mix(in srgb,var(--text) 14%,var(--panel));cursor:pointer;transition:background-color .2s}
+.chk input::after{content:'';position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--panel);box-shadow:0 1px 3px rgb(0 0 0 / 35%);transition:transform .22s var(--ease)}
+.chk input:checked{background:var(--acc);border-color:var(--acc)}.chk input:checked::after{transform:translateX(12px);background:var(--on-acc)}
+.est{padding:10px 12px;border-radius:var(--r);background:color-mix(in srgb,var(--panel) 60%,transparent);border:1px solid var(--line-soft)}
+section.run{padding:14px;border-radius:calc(var(--r) + 4px);background:color-mix(in srgb,var(--panel) 55%,transparent);border:1px solid var(--line-soft);box-shadow:inset 0 1px 0 rgb(255 255 255 / 4%)}
+.meta #phase{color:var(--text);font-weight:600}
+.bar{height:6px;border:0;background:color-mix(in srgb,var(--text) 10%,transparent)}
+.bar i{background:linear-gradient(90deg,var(--acc),var(--acc2),var(--acc));background-size:200% 100%;animation:st-flow 2.4s linear infinite;border-radius:9px}
+@keyframes st-flow{to{background-position:-200% 0}}
+#log{border-radius:var(--r);border-color:var(--line-soft);box-shadow:inset 0 2px 10px rgb(0 0 0 / 18%)}
+#report{border-radius:var(--r)}
+.card{border-radius:calc(var(--r) + 4px);padding:14px 16px;transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s}
+.card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--acc) 45%,var(--line));box-shadow:0 14px 30px -18px rgb(0 0 0 / 55%)}
+.card h3{font-size:14px;font-weight:650}
+.badge{padding:1px 8px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+[hidden]{display:none!important}
+@media(max-width:820px){main{grid-template-columns:1fr;overflow:auto}}
+@media(prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style></head><body>
+<header><h1><span class="mark" aria-hidden="true">✦</span><span>Skin Studio<small>Backgrounds from AI art, your own pictures, or code</small></span></h1><nav role="tablist"><button role="tab" id="tab-create" aria-selected="true">Create</button><button role="tab" id="tab-providers" aria-selected="false">Providers &amp; keys</button></nav></header>
+<main id="create">
+<form id="f">
+<p class="lead">Describe a look, use your own picture or video, or both. Runs get a hard time limit and spend cap; when time is up you get the skin so far and a report.</p>
+<label>Name<input id="name" required value="My Skin" maxlength="40"></label>
+<label>Describe it<textarea id="describe" placeholder="e.g. moonlit koi pond, paper lanterns, cherry blossoms at the edges, ink and gold"></textarea></label>
+<div class="chips" id="ideas"></div>
+<div><label id="srclbl">Background</label><div class="seg" role="group" aria-labelledby="srclbl" id="source">
+<button type="button" data-v="ai">AI artwork</button><button type="button" data-v="image">My image</button><button type="button" data-v="video">My video/GIF</button><button type="button" data-v="procedural">Procedural</button></div></div>
+<div id="sec-image" class="file"><button type="button" id="pickImg">Choose image…</button><span id="imgname">none</span></div>
+<div id="sec-video" class="file" hidden><button type="button" id="pickVid">Choose video/GIF…</button><span id="vidname">none</span></div>
+<div id="sec-ai" class="box">
+  <div class="row"><label>Image provider<select id="provider"></select></label><label>Model<input id="model" list="models" placeholder="default"><datalist id="models"></datalist></label></div>
+  <label id="cmdwrap" hidden>Command template<input id="cmd" placeholder="python gen.py --prompt {prompt} --out {out} --ref {image}"></label>
+  <p class="hint" id="provhint"></p>
+  <label class="chk"><input type="checkbox" id="video"> Also animate it (image-to-video loop)</label>
+  <div class="row" id="vidrow" hidden><label>Video provider<select id="videoProvider"></select></label><label>Video model<input id="videoModel" list="vmodels" placeholder="default"><datalist id="vmodels"></datalist></label></div>
+</div>
+<div class="row3"><label>Time limit<select id="time"><option value="90s">90 seconds</option><option value="3m">3 minutes</option><option value="5m" selected>5 minutes</option><option value="10m">10 minutes</option><option value="20m">20 minutes</option></select></label>
+<label>Max credits<input id="credits" type="number" min="0" step="0.5" value="6" title="Cap for credit-billed providers (Higgsfield)"></label>
+<label>Max $<input id="usd" type="number" min="0" step="0.05" value="1" title="Cap for providers billed in money (OpenAI, Google, Replicate, fal, Magnific)"></label></div>
+<div class="est" id="est" aria-live="polite">Estimating…</div>
+<button class="primary" id="go">Create skin</button>
+<p class="hint">Free with no account: Procedural, My image, My video/GIF, or a local ComfyUI / Automatic1111.</p></form>
+<section class="run"><div class="meta"><span id="phase">Idle</span><span id="clock"></span></div><div class="bar"><i id="prog"></i></div>
+<pre id="log">Results appear here.</pre>
+<div><div id="report"></div><div class="actions" style="margin-top:10px"><button id="stop" disabled>Finish now</button><button id="apply" disabled>Apply skin</button><button id="resume" disabled>Resume (more time)</button><button id="folder" disabled>Open folder</button></div></div></section>
+</main>
+<section id="providers" hidden>
+<p class="intro" id="secure-note"></p>
+<div class="cards" id="cards"></div>
+</section>
+<script>
+const $=id=>document.getElementById(id);let info=null,image=null,videoFile=null,source='ai',lastId=null,running=false,estTimer=0,estSeq=0;
+function applyTheme(t){if(!t)return;const root=document.documentElement;root.style.colorScheme=t.appearance==='light'?'light':'dark';
+  const props={'--bg':t.bg,'--panel':t.surface,'--panel2':t.surface,'--line':t.border,'--text':t.text,'--muted':t.muted,'--acc':t.accent,'--acc2':t.accent2||t.accent,'--on-acc':t.onAccent,'--code':t.codeBg};
+  for(const [key,value] of Object.entries(props))if(value)root.style.setProperty(key,value);
+  if(t.radius!=null)root.style.setProperty('--studio-radius',Math.round(Math.min(16,t.radius*.6+4))+'px');if(t.font)root.style.setProperty('--studio-font',t.font);else root.style.removeProperty('--studio-font');
+  const light=t.appearance==='light';root.style.setProperty('--warn',light?'#885000':'#ffb86b');root.style.setProperty('--ok',light?'#17633f':'#5ef2a6');root.style.setProperty('--bad',light?'#b4213d':'#ff7b8f');}
+const ideas=['Moonlit koi pond, lanterns','Rainy Tokyo alley, neon signs','Enchanted forest, glowing runes','Pink sakura dusk, soft clouds','Space station window, ringed planet','Dragon forge, embers and lava'];
+ideas.forEach(t=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.onclick=()=>{$('describe').value=t;$('name').value=t.split(',')[0];schedule()};$('ideas').append(b)});
+const STATUS={verified:['tested','ok','Tested end to end with a real key on 2026-10-24'],keycheck:['key check only','warn','Key test verified; a paid generation has not been run'],untested:['untested','bad','Built from the official docs but not run with a real key']};
+const badge=(st)=>{const s=STATUS[st]||STATUS.untested;const b=document.createElement('span');b.className='badge '+s[1];b.textContent=s[0];b.title=s[2];return b};
+const money=(a,u)=>a==null?'price unavailable':!a?'free':u==='usd'?'$'+(+a).toFixed(a<0.1?3:2):a+' credits';
+
+/* ---------- tabs ---------- */
+function tab(t){const p=t==='providers';$('create').hidden=p;$('providers').hidden=!p;$('tab-create').setAttribute('aria-selected',!p);$('tab-providers').setAttribute('aria-selected',p);if(p)renderCards();else load()}
+$('tab-create').onclick=()=>tab('create');$('tab-providers').onclick=()=>tab('providers');
+
+/* ---------- create form ---------- */
+function setSource(v){source=v;for(const b of $('source').children)b.setAttribute('aria-pressed',b.dataset.v===v);
+  $('sec-ai').hidden=v!=='ai';$('sec-image').hidden=!(v==='ai'||v==='image');$('sec-video').hidden=v!=='video';
+  $('pickImg').textContent=v==='ai'?'Reference image (optional)…':'Choose image…';schedule()}
+for(const b of $('source').children)b.onclick=()=>setSource(b.dataset.v);
+function fillSelect(sel,routes,keep){const cur=keep||sel.value;sel.textContent='';for(const r of routes){const o=document.createElement('option');o.value=r.id;
+  o.textContent=r.label+(r.ready?'':' — not set up')+(r.status==='untested'?' (untested)':'');sel.append(o)}if([...sel.options].some(o=>o.value===cur))sel.value=cur}
+function routeOf(list,id){return (info&&info[list]||[]).find(r=>r.id===id)}
+function syncProvider(){const r=routeOf('image',$('provider').value);$('cmdwrap').hidden=$('provider').value!=='command';
+  $('models').textContent='';if(r){for(const m of r.models){const o=document.createElement('option');o.value=m;$('models').append(o)}$('model').placeholder=r.defaultModel||'default'}
+  const h=$('provhint');h.textContent='';if(r){h.append(document.createTextNode((r.ready?'':'Not set up: '+r.setup+' · ')+(r.costHint||'')+' '),badge(r.status))}
+  const v=routeOf('video',$('videoProvider').value);$('vmodels').textContent='';if(v){for(const m of v.models){const o=document.createElement('option');o.value=m;$('vmodels').append(o)}$('videoModel').placeholder=v.defaultModel||'default'}
+  $('vidrow').hidden=!$('video').checked;schedule()}
+['provider','videoProvider','video'].forEach(id=>$(id).addEventListener('change',syncProvider));
+['model','videoModel','credits','usd'].forEach(id=>$(id).addEventListener('input',schedule));
+$('pickImg').onclick=async()=>{const p=await studio.pickFile('image');if(p){image=p;$('imgname').textContent=p;schedule()}};
+$('pickVid').onclick=async()=>{const p=await studio.pickFile('video');if(p){videoFile=p;$('vidname').textContent=p;schedule()}};
+function opts(){return {name:$('name').value,describe:$('describe').value,source,image,videoFile,provider:$('provider').value,model:$('model').value,cmd:$('cmd').value,
+  video:source==='ai'&&$('video').checked,videoProvider:$('videoProvider').value,videoModel:$('videoModel').value,time:$('time').value,credits:$('credits').value,usd:$('usd').value}}
+
+/* ---------- cost + time estimate (before Run) ---------- */
+function schedule(){clearTimeout(estTimer);++estSeq;if(!running)estTimer=setTimeout(estimate,350)}
+async function estimate(){const o=opts(),seq=++estSeq;const el=$('est');
+  if(source!=='ai'){const free={image:'Your image as-is: free, a few seconds.',video:'Your video/GIF as-is: free. Conversion and the still frame take a few seconds.',procedural:'Procedural skin: free, about 2 seconds.'}[source];
+    el.textContent=free;$('go').textContent='Create skin — free';$('go').disabled=running||(source==='image'&&!image)||(source==='video'&&!videoFile);return}
+  el.textContent='Estimating cost…';let r;try{r=await studio.estimate(o)}catch{r={error:'Estimate unavailable'}}if(seq!==estSeq)return;el.textContent='';
+  if(!r||r.error){el.textContent='Could not estimate: '+(r&&r.error||'unknown');$('go').textContent='Create skin';$('go').disabled=running;return}
+  let usd=0,cr=0;const notReady=[],unknown=r.lines.some(l=>l.amount==null);
+  for(const l of r.lines){if(l.unit==='usd')usd+=l.amount;else cr+=l.amount;if(!l.ready)notReady.push(l.label);
+    const d=document.createElement('div');d.append(Object.assign(document.createElement('b'),{textContent:(l.stage==='image'?'Image':'Video loop')+': '}),
+      document.createTextNode(`${l.label}${l.model?' / '+l.model:''} · ${money(l.amount,l.unit)}${l.amount?' ('+l.source+')':''} · ${l.time} `),badge(l.status));el.append(d)}
+  if(!r.lines.length)el.append('Procedural skin: free, about 2 seconds.');
+  const tot=document.createElement('div');tot.className='tot';const parts=[usd?money(usd,'usd'):'',cr?money(cr,'credits'):''].filter(Boolean);
+  const over=(usd>+$('usd').value)||(cr>+$('credits').value);
+  tot.textContent=(unknown?'Full price unavailable'+(parts.length?' · known costs: '+parts.join(' + '):''):parts.length?'Total if everything runs: '+parts.join(' + '):'Total: free')+(over?' — above your cap: those steps will be skipped':'')+(r.lines.some(l=>l.source==='static table')?'. Static-table prices are approximate (checked 2026-10-24), not live quotes.':'');
+  el.append(tot);if(notReady.length){const w=document.createElement('div');w.style.color='var(--warn)';w.textContent='Set up first in Providers & keys: '+notReady.join(', ');el.append(w)}
+  $('go').textContent=unknown?'Create skin — price unavailable':parts.length?'Create skin — estimate '+parts.join(' + '):'Create skin — free';$('go').disabled=running||notReady.length>0}
+
+/* ---------- run ---------- */
+function line(t,c){if($('log').dataset.fresh!=='0'){$('log').textContent='';$('log').dataset.fresh='0'}const s=document.createElement('span');if(c)s.className=c;s.textContent=t+'\n';$('log').append(s);$('log').scrollTop=1e9}
+function setRunning(v){running=v;$('go').disabled=v;$('stop').disabled=!v;if(v){$('apply').disabled=$('resume').disabled=$('folder').disabled=true;$('report').style.display='none'}else schedule()}
+async function start(o){setRunning(true);$('log').dataset.fresh='1';$('phase').textContent='Starting…';const r=await studio.run(o);if(r&&r.error){line(r.error,'error');setRunning(false)}}
+$('f').onsubmit=e=>{e.preventDefault();if(!running)start(opts())};
+$('resume').onclick=()=>start({resume:lastId,time:$('time').value,credits:$('credits').value,usd:$('usd').value,video:$('video').checked,videoProvider:$('videoProvider').value});
+$('stop').onclick=()=>studio.finishNow();
+$('apply').onclick=()=>studio.apply(lastId);$('folder').onclick=()=>studio.openFolder(lastId);
+studio.onEvent(ev=>{
+  if(ev.type==='theme'){applyTheme(ev.theme);return}
+  if(ev.type==='tab'){tab(ev.tab);return}
+  if(ev.type==='exit'){setRunning(false);return}
+  if(ev.type==='stderr'){line(ev.msg,'error');return}
+  const pct=ev.budget?Math.min(100,100*(ev.budget-ev.left)/ev.budget):0;$('prog').style.width=pct+'%';
+  $('clock').textContent=ev.t+'s used · '+ev.left+'s left · spent '+(ev.spentText||'nothing');
+  if(ev.type==='start')$('phase').textContent='Working…';
+  if(ev.type==='step')line('['+ev.t+'s] '+ev.stage+': '+ev.status+(ev.msg?' — '+ev.msg:''),ev.status);
+  else if(ev.type==='stage'||ev.type==='progress')line('['+ev.t+'s] '+(ev.stage?ev.stage+': ':'')+ev.msg);
+  else if(ev.type==='error'){line('Error: '+ev.msg,'error');$('phase').textContent='Error'}
+  else if(ev.type==='done'){lastId=ev.id;$('phase').textContent=ev.complete?'Done ✓':'Delivered partially — needs more time';
+    $('report').textContent=ev.report;$('report').style.display='block';$('apply').disabled=false;$('folder').disabled=false;$('resume').disabled=ev.complete;$('prog').style.width='100%'}
+});
+
+/* ---------- providers & keys ---------- */
+function renderCards(){if(!info)return;const c=$('cards');c.textContent='';
+  $('secure-note').textContent=(info.secure?'Keys are encrypted with your operating system\'s secure storage and kept only in this launcher\'s profile folder. ':'Secure key storage is not available on this system, so keys cannot be saved here; set the environment variables shown instead. ')+
+    'They are passed to the generator as environment variables and are never written to skins, receipts, reports or logs. "Test key" uses a free request and spends nothing. Shared .t3skin files never contain keys.';
+  for(const a of info.accounts){const k=info.keys[a.id]||{},t=info.tests[a.id];const card=document.createElement('div');card.className='card';
+    const h=document.createElement('h3');h.textContent=a.label;const st=document.createElement('span');st.className='state badge';
+    const local=a.kind==='local',cli=a.kind==='cli';
+    const found=local?info.local[a.id]:null;
+    if(local){st.textContent=found?'running':'not found';st.classList.add(found?'ok':'warn')}
+    else if(k.saved||k.fromEnv||(cli&&a.cliFound)){st.textContent=t?(t.ok?'working':'check failed'):(k.saved?'key saved':k.fromEnv?'from env var':'CLI found');st.classList.add(t?(t.ok?'ok':'bad'):'warn')}
+    else{st.textContent='not set up'}
+    h.append(st);card.append(h);
+    const routes=document.createElement('div');routes.className='routes';
+    for(const r of [...info.image.filter(r=>r.account===a.id).map(r=>['Image',r]),...info.video.filter(r=>r.account===a.id).map(r=>['Video',r])]){
+      const s=document.createElement('span');s.className='badge';s.textContent=r[0]+': '+r[1].label.replace(/^[^·]*· ?/,'');routes.append(s,badge(r[1].status))}
+    card.append(routes);
+    const p=document.createElement('p');p.textContent=a.costHint;card.append(p);
+    if(a.note){const n=document.createElement('p');n.textContent=a.note;card.append(n)}
+    const msg=document.createElement('div');msg.className='msg';if(t){msg.textContent=(t.ok?'✓ ':'✗ ')+t.msg;msg.classList.add(t.ok?'ok':'bad')}
+    const kr=document.createElement('div');kr.className='keyrow';const inp=document.createElement('input');
+    if(a.env){inp.type=local?'url':'password';inp.autocomplete='off';inp.spellcheck=false;inp.placeholder=local?(found||a.placeholder):(k.saved?k.hint+'  (saved)':k.fromEnv?'using '+k.env+' from the environment':a.placeholder||'paste API key');
+      inp.setAttribute('aria-label',a.label+(local?' URL':' API key'));if(local&&k.saved)inp.value=k.hint;kr.append(inp);
+      const save=document.createElement('button');save.className='small';save.type='button';save.textContent='Save';
+      save.onclick=async()=>{const r=await studio.setKey(a.id,inp.value);if(r.error){msg.textContent='✗ '+r.error;msg.className='msg bad';return}info.keys=r.keys;inp.value='';msg.textContent=local?'Saved.':'Saved (encrypted).';msg.className='msg ok';await load();renderCards()};
+      kr.append(save);card.append(kr)}
+    const btns=document.createElement('div');btns.className='btns';
+    const test=document.createElement('button');test.className='small';test.type='button';test.textContent=local?'Detect / test':'Test key';
+    test.onclick=async()=>{test.disabled=true;msg.textContent='Testing (free request)…';msg.className='msg';const r=await studio.testKey(a.id,local?'':inp.value);test.disabled=false;
+      msg.textContent=(r.ok?'✓ ':'✗ ')+(r.msg||r.error||'');msg.className='msg '+(r.ok?'ok':'bad');await load();renderCards()};
+    btns.append(test);
+    if(cli){const lg=document.createElement('button');lg.className='small';lg.type='button';lg.textContent='Log in (opens browser)';lg.onclick=async()=>{const r=await studio.higgsfieldLogin();msg.textContent=r.error||'Finish the login in your browser, then press Test.';msg.className='msg'+(r.error?' bad':'')};btns.append(lg)}
+    if(k.saved&&!local){const rm=document.createElement('button');rm.className='small';rm.type='button';rm.textContent='Remove key';rm.onclick=async()=>{await studio.setKey(a.id,'');await load();renderCards()};btns.append(rm)}
+    card.append(btns);
+    const links=document.createElement('div');links.className='btns';
+    for(const [txt,url] of [['Sign up / get key',a.signup],['Pricing',a.pricing],['Docs',a.docs]])if(url){const l=document.createElement('a');l.textContent=txt;l.tabIndex=0;l.onclick=()=>studio.openLink(url);l.onkeydown=e=>{if(e.key==='Enter')studio.openLink(url)};links.append(l)}
+    card.append(links,msg);c.append(card)}}
+
+async function load(){info=await studio.info();if(!info)return;applyTheme(info.theme);const L=info.last||{};
+  fillSelect($('provider'),[{id:'auto',label:'Auto (best set-up provider)',ready:true,status:'verified'},...info.image],$('provider').value||L.provider);
+  fillSelect($('videoProvider'),info.video,$('videoProvider').value||L.videoProvider);
+  if(L.time&&!load.done){$('time').value=L.time;if(L.credits!=null)$('credits').value=L.credits;if(L.usd!=null)$('usd').value=L.usd}
+  if(!load.done){load.done=1;setSource(L.source&&L.source!=='video'&&L.source!=='image'?L.source:'ai')}
+  syncProvider()}
+load().then(()=>{if(location.hash==='#providers')tab('providers')});
+</script></body></html>

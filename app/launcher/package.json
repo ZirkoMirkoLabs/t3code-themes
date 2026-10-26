@@ -1,0 +1,8 @@
+{
+  "name": "t3-space-terminal-launcher",
+  "version": "0.2.0",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": { "start": "electron .", "check": "node --check main.cjs" },
+  "dependencies": { "electron": "45.0.0", "ffmpeg-static": "5.3.0" }
+}

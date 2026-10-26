@@ -1,0 +1,32 @@
+{
+  "format": "t3theme/1",
+  "id": "meadow-breeze",
+  "name": "Summer Meadow",
+  "tagline": "the wind knows the way home",
+  "description": "A hand-painted summer day: deep blue sky with huge sunlit cumulus drifting by, cloud shadows over rolling hills, a lone tree on the crest and tall grass swaying in waves of wind, with wildflowers and dandelion seeds on the breeze.",
+  "category": "Nature",
+  "tags": ["light", "nature", "summer", "meadow", "clouds", "grass", "cozy", "anime"],
+  "author": "T3 Skins",
+  "generated": false,
+  "appearance": "light",
+  "palette": {
+    "bg": "#eef5f9", "surface": "#fbfdff", "text": "#13202c", "muted": "#43566a",
+    "accent": "#2c7a4b", "accent2": "#1d68b0", "border": "#c6d8e4", "selection": "#8cc8ef",
+    "codeBg": "#f3f8fb", "codeText": "#182836"
+  },
+  "sceneColors": ["#1c58c4", "#9ad6f5", "#ffffff", "#9db3d8", "#7cb8a4", "#3e8c3c", "#9ad857", "#ffd84a"],
+  "fonts": {
+    "ui": "\"Segoe UI\", system-ui, sans-serif",
+    "mono": "\"Cascadia Mono\", Consolas, ui-monospace, monospace",
+    "display": "Georgia, \"Palatino Linotype\", serif"
+  },
+  "shape": { "radius": 14, "density": "normal", "borderWidth": 1 },
+  "ui": { "surface": "glass", "glass": 0.86, "blur": 14, "shadow": "soft", "topbar": "glass", "decor": "none",
+          "textGlow": false, "overlay": "none", "heroStyle": "plain", "uppercase": false },
+  "icons": { "style": "default", "color": "muted" },
+  "loader": { "style": "pulse" },
+  "motion": { "fps": 30, "resolution": 0.75, "interactive": false },
+  "scene": { "file": "scene.js", "params": {} },
+  "welcome": { "file": "welcome.js", "height": 140, "text": "Summer Meadow" },
+  "textSafety": { "scrim": 0.55, "heroScrim": 0.35, "blur": 6, "busy": "medium" }
+}

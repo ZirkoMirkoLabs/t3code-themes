@@ -1,0 +1,30 @@
+{
+  "format": "t3theme/1",
+  "id": "playground",
+  "name": "Playground",
+  "tagline": "grab, throw, repeat",
+  "description": "A physics toy box. Bouncy blobs with googly eyes fall, stack and land on top of the composer; the sidebar, top bar and message lane are solid walls, so toys never sit behind text. Drag to fling, click empty space to add one.",
+  "category": "Interactive",
+  "tags": ["light", "physics", "interactive", "toy", "playful", "colourful"],
+  "author": "T3 Skins",
+  "appearance": "light",
+  "palette": {
+    "bg": "#fbf4e8", "surface": "#ffffff", "text": "#1b1b2f", "muted": "#525268",
+    "accent": "#3550e8", "accent2": "#ff7a1a", "border": "#e4d8c6", "selection": "#ffd166",
+    "codeBg": "#f6efe2", "codeText": "#1b1b2f"
+  },
+  "sceneColors": ["#3550e8", "#ff7a1a", "#ffd166", "#06d6a0", "#ef476f", "#8a5cf6", "#1b1b2f", "#efe4d2"],
+  "fonts": {
+    "display": "Fredoka, Trebuchet MS, sans-serif",
+    "files": [{ "family": "Fredoka", "file": "fonts/fredoka.woff2", "weight": "300 700" }]
+  },
+  "shape": { "radius": 14, "density": "normal", "borderWidth": 2 },
+  "ui": { "surface": "solid", "glass": 0.97, "blur": 0, "shadow": "hard", "topbar": "solid", "decor": "none",
+          "heroStyle": "plain", "overlay": "none", "cursorLight": false, "hideStageArt": true },
+  "icons": { "style": "bold", "color": "text" },
+  "loader": { "style": "blocks" },
+  "motion": { "fps": 60, "resolution": 0.9, "interactive": true },
+  "scene": { "file": "scene.js", "params": { "count": 34, "gravity": 1100, "bounce": 0.45 } },
+  "welcome": { "file": "welcome.js", "height": 140, "text": "LET'S PLAY" },
+  "textSafety": { "scrim": 0.35, "heroScrim": 0.2, "blur": 0, "busy": "low" }
+}

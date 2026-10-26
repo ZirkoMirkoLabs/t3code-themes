@@ -1,0 +1,30 @@
+{
+  "format": "t3theme/1",
+  "id": "rainy-cafe",
+  "name": "Rainy Café",
+  "tagline": "a quiet corner table",
+  "description": "Soft pastel dusk through a café window: blurred city lights, raindrops sliding down the glass, steam rising from a cup. Rounded paper panels, stitched composer, gentle motion.",
+  "category": "Cozy",
+  "tags": ["light", "pastel", "cozy", "rain", "cafe", "calm", "lofi"],
+  "author": "T3 Skins",
+  "appearance": "light",
+  "palette": {
+    "bg": "#f4e6df", "surface": "#fffaf6", "text": "#3a2a2f", "muted": "#6f565d",
+    "accent": "#b9506f", "accent2": "#6f9e8b", "border": "#e6d0c6", "selection": "#f2b8c8",
+    "codeBg": "#fbf0ea", "codeText": "#3a2a2f"
+  },
+  "sceneColors": ["#cdb9e6", "#f6c9b9", "#fbeee6", "#ffd9a8", "#f7a8c0", "#b8dccd", "#c7c6f4"],
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "display": "Georgia, Iowan Old Style, Palatino Linotype, serif"
+  },
+  "shape": { "radius": 22, "density": "roomy", "borderWidth": 1 },
+  "ui": { "surface": "paper", "glass": 0.9, "blur": 10, "shadow": "soft", "topbar": "glass", "decor": "stitch",
+          "heroStyle": "plain", "overlay": "grain", "cursorLight": false, "hideStageArt": true },
+  "icons": { "style": "thin", "color": "muted", "custom": { "settings": "icons/settings.svg" } },
+  "loader": { "style": "pulse" },
+  "motion": { "fps": 30, "resolution": 0.7, "interactive": true },
+  "scene": { "file": "scene.js", "params": { "bokeh": 26, "drops": 90, "sliders": 12 } },
+  "welcome": { "file": "welcome.js", "height": 150, "text": "a quiet corner" },
+  "textSafety": { "scrim": 0.4, "heroScrim": 0.25, "blur": 6, "busy": "low" }
+}

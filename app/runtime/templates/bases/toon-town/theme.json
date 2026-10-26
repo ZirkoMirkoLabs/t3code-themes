@@ -1,0 +1,31 @@
+{
+  "format": "t3theme/1",
+  "id": "toon-town",
+  "name": "Toon Town",
+  "tagline": "sunny side up",
+  "description": "Saturday-morning cartoon: puffy outlined clouds, a grinning sun and rolling hills. Thick ink outlines, chunky icons and a bouncy welcome.",
+  "category": "Cartoon",
+  "tags": ["bright", "light", "cartoon", "fun", "kids"],
+  "author": "T3 Skins",
+  "appearance": "light",
+  "palette": {
+    "bg": "#bfe8ff", "surface": "#fffdf5", "text": "#1d1a2b", "muted": "#4a4560",
+    "accent": "#d92673", "accent2": "#ffc928", "border": "#1d1a2b", "selection": "#ffc928",
+    "codeBg": "#fff4d6", "codeText": "#1d1a2b"
+  },
+  "sceneColors": ["#7cc8ff", "#e4f6ff", "#86dc5c", "#4fbf4a", "#ffffff", "#ffc928", "#1d1a2b", "#38c6c0"],
+  "fonts": {
+    "ui": "Fredoka, Trebuchet MS, Segoe UI, sans-serif",
+    "display": "Fredoka, Comic Sans MS, sans-serif",
+    "files": [{ "family": "Fredoka", "file": "fonts/fredoka.woff2", "weight": "300 700" }]
+  },
+  "shape": { "radius": 18, "density": "normal", "borderWidth": 2.5 },
+  "ui": { "surface": "paper", "glass": 0.96, "blur": 0, "shadow": "hard", "topbar": "solid", "decor": "none",
+          "heroStyle": "shadow", "overlay": "none", "cursorLight": false, "hideStageArt": true },
+  "icons": { "style": "cartoon", "color": "text", "custom": { "settings": "icons/settings.svg" } },
+  "loader": { "style": "bounce" },
+  "motion": { "fps": 30, "resolution": 0.85, "interactive": false },
+  "scene": { "file": "scene.js", "params": { "clouds": 8, "birds": 4 } },
+  "welcome": { "file": "welcome.js", "height": 150, "text": "Let's make stuff!" },
+  "textSafety": { "scrim": 0.45, "heroScrim": 0.3, "blur": 2, "busy": "medium" }
+}

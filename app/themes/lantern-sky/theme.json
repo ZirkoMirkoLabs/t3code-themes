@@ -1,0 +1,31 @@
+{
+  "format": "t3theme/1",
+  "id": "lantern-sky",
+  "name": "Lantern Night",
+  "tagline": "make a wish and let it rise",
+  "description": "Hundreds of glowing paper sky lanterns drift up from a still mirror lake under a deep indigo starry sky. Warm amber reflections shimmer on the water beside distant hills and a small pavilion.",
+  "category": "Nature",
+  "tags": ["dark", "lanterns", "night", "lake", "festival", "cozy", "warm"],
+  "author": "T3 Skins",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#070818", "surface": "#0e1028", "text": "#f5eddf", "muted": "#b5afcb",
+    "accent": "#ffb35c", "accent2": "#a3b5ff", "border": "#24264a", "selection": "#ffb35c",
+    "codeBg": "#0a0b1f", "codeText": "#ece6f4"
+  },
+  "sceneColors": ["#060820", "#2c2253", "#ffad4f", "#fff0c8", "#0b0a20", "#05061a"],
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "display": "Palatino Linotype, Georgia, serif"
+  },
+  "shape": { "radius": 10, "density": "normal", "borderWidth": 1 },
+  "ui": { "surface": "glass", "glass": 0.78, "blur": 16, "shadow": "soft", "topbar": "glass", "decor": "none",
+          "heroStyle": "glow", "overlay": "vignette", "uppercase": false },
+  "icons": { "style": "thin", "color": "muted" },
+  "loader": { "style": "pulse" },
+  "motion": { "fps": 30, "resolution": 0.8, "interactive": false },
+  "scene": { "file": "scene.js", "params": { "count": 240, "rise": 1 } },
+  "welcome": { "file": "welcome.js", "height": 120, "text": "LANTERN NIGHT" },
+  "textSafety": { "scrim": 0.5, "heroScrim": 0.3, "blur": 4, "busy": "medium" }
+}

@@ -33,6 +33,12 @@ T3 Code has no theme system yet, so an unrequested pull request that adds one is
 
 If they say no, nothing is lost: the repo stays yours, and you can share it on its own.
 
-## 4. What is not published
+## 4. The app (`app/`)
 
-The runtime, launcher and Skin Studio stay private for now. They contain the encrypted key store, provider settings and local paths. Publishing them needs its own clean-up and scan; do not add them to this repo as they are.
+`app/` is made by `scripts/export_app.py` in the working project, never copied by hand. It copies an allow-list only:
+- launcher code, without `.profile/` (keys, settings, session) or `node_modules/`;
+- the runtime and theme studio, without thread briefs;
+- the playground, rewritten with sample projects;
+- the 11 themes (4 files each).
+
+It leaves out the dashboard (it reads local T3 threads), the AI image skins and backups. Re-run the export, the check in step 1 and the tests in `app/README.md` before every push.

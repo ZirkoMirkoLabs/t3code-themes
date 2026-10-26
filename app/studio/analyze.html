@@ -1,0 +1,61 @@
+<!doctype html><html><head><meta charset="utf-8"><title>analyzer</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; img-src blob:; media-src blob:">
+</head><body><script>
+// Hidden helper window: palette + thumbnail + poster frame for a skin's image, GIF or video, using canvas.
+// Same algorithm as the old Python/Pillow step, so existing skins keep their look.
+'use strict';
+const hsv = (r, g, b) => { r /= 255; g /= 255; b /= 255; const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+  let h = 0; if (d) h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; h = ((h / 6) % 1 + 1) % 1;
+  return [mx === mn ? 0 : h, mx ? d / mx : 0, mx]; };
+const rgb = (h, s, v) => { h = ((h % 1) + 1) % 1; const i = Math.floor(h * 6), f = h * 6 - i, p = v * (1 - s), q = v * (1 - s * f), t = v * (1 - s * (1 - f));
+  return [[v, t, p], [q, v, p], [p, v, t], [p, q, v], [t, p, v], [v, p, q]][i % 6].map(x => x * 255); };
+const hx = c => '#' + c.map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
+
+function palette(ctx) {
+  const d = ctx.getImageData(0, 0, 160, 90).data, px = [];
+  for (let i = 0; i < d.length; i += 4) px.push([d[i], d[i + 1], d[i + 2]]);
+  const sum = p => p[0] + p[1] + p[2];
+  const avg = px.reduce((s, p) => s + sum(p), 0) / px.length / 765;
+  const dark = [...px].sort((a, b) => sum(a) - sum(b)).slice(0, px.length >> 2);
+  const [dh, ds] = hsv(...[0, 1, 2].map(i => dark.reduce((s, p) => s + p[i], 0) / dark.length));
+  const bg = rgb(dh, Math.min(ds, 0.55), 0.045);
+  const hi = px.map(p => hsv(...p)).filter(([, s, v]) => v > 0.45 && s > 0.25);
+  const bins = new Array(24).fill(0); for (const [h, s, v] of hi) bins[Math.floor(h * 24) % 24] += s * v;
+  const order = [...bins.keys()].sort((a, b) => bins[b] - bins[a]);
+  let a1, a2;
+  if (!hi.length || bins[order[0]] === 0) { a1 = dh + 0.5; a2 = a1 + 0.12; }
+  else {
+    a1 = (order[0] + 0.5) / 24;
+    const far = order.slice(1).filter(i => Math.min(Math.abs(i - order[0]), 24 - Math.abs(i - order[0])) >= 3 && bins[i] > bins[order[0]] * 0.12);
+    a2 = far.length ? (far[0] + 0.5) / 24 : a1 + 0.08;
+  }
+  const acc = rgb(a1, 0.62, 0.95), acc2 = rgb(a2, 0.45, 0.98);
+  let surf = rgb(dh, Math.min(ds, 0.35), 0.11); surf = surf.map((v, i) => v * 0.85 + acc[i] * 0.05);
+  const border = surf.map((v, i) => v * 0.7 + acc[i] * 0.18);
+  return { bg: hx(bg), surface: hx(surf), text: hx(rgb(a1, 0.07, 0.96)), muted: hx(rgb(a1, 0.18, 0.72)), accent: hx(acc), accent2: hx(acc2), border: hx(border), brightness: Math.round(avg * 1000) / 1000 };
+}
+async function load(bytes, mime) {
+  const url = URL.createObjectURL(new Blob([bytes], { type: mime }));
+  if (mime.startsWith('video/')) {
+    const v = document.createElement('video'); v.muted = true; v.preload = 'auto'; v.src = url;
+    await new Promise((ok, no) => { v.onloadeddata = ok; v.onerror = () => no(Error('This video format cannot be played here (use MP4/H.264 or WebM)')); });
+    v.currentTime = Math.min(0.5, (v.duration || 1) / 4); await new Promise(ok => { v.onseeked = ok; setTimeout(ok, 1500); });
+    return { el: v, w: v.videoWidth, h: v.videoHeight, duration: v.duration };
+  }
+  const img = new Image(); img.src = url; await img.decode().catch(() => { throw Error('This image cannot be decoded'); });
+  return { el: img, w: img.naturalWidth, h: img.naturalHeight };
+}
+const jpeg = (c, q) => new Promise(ok => c.toBlob(b => b.arrayBuffer().then(a => ok(new Uint8Array(a))), 'image/jpeg', q));
+function draw(src, w, h) { const c = document.createElement('canvas'); c.width = w; c.height = h; const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(src.el, 0, 0, w, h); return [c, x]; }
+async function analyze({ bytes, mime, poster, posterWidth }) {
+  const src = await load(bytes, mime);
+  if (!src.w || !src.h) throw Error('Empty image or video');
+  const [, small] = draw(src, 160, 90);
+  const out = { palette: palette(small), width: src.w, height: src.h, duration: src.duration || null };
+  const tw = 480, th = Math.max(1, Math.round(480 * src.h / src.w));
+  out.thumb = await jpeg(draw(src, tw, Math.min(th, 270))[0], 0.86);
+  if (poster) { const pw = Math.min(src.w, posterWidth || 1920); out.poster = await jpeg(draw(src, pw, Math.round(pw * src.h / src.w))[0], 0.9); }
+  return out;
+}
+window.analyzer.onJob(async job => { try { window.analyzer.done(job.id, await analyze(job)); } catch (e) { window.analyzer.done(job.id, { error: String(e.message || e) }); } });
+</script></body></html>

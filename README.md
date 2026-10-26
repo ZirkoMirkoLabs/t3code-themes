@@ -6,6 +6,8 @@ Ten animated themes for [T3 Code](https://github.com/pingdotgg/t3code), drawn en
 
 **[▶ Try them live in your browser](https://zirkomirkolabs.github.io/t3code-themes/)** · [Watch the 23-second video](media/t3code-themes-launch.mp4)
 
+**New: the app.** Use the themes inside T3 Code with a Themes button, a library and an 11th theme, **Cozy Room**, which has a cat living in it. **[▶ Try the app in your browser](https://zirkomirkolabs.github.io/t3code-themes/app/preview/)** · [Watch the 50-second video](media/themes-proposal.mp4) · [Install it](app/README.md)
+
 Each theme sets the colours, fonts and panel style, draws a live animated background and plays a short title animation. There are no image or video files and no network requests: every lantern, koi and wave is drawn on a canvas by a few hundred lines of JavaScript.
 
 ## The themes
@@ -46,9 +48,15 @@ https://zirkomirkolabs.github.io/t3code-themes/?theme=cozy-cabin&wallpaper
 
 Wallpaper apps usually pause the animation when a window is full screen, so it costs nothing while you work.
 
-### Inside T3 Code
+### Inside T3 Code: the app
 
-T3 Code has no theme support yet. The themes are written in a small, documented format (`t3theme/1`) so they can drop straight in when it does. Until then they run in T3 Skins, a separate window that wraps the official app without changing it. That window is not public yet.
+T3 Code has no theme support yet, so [`app/`](app/README.md) adds it. It opens the real T3 Code client in its own window, without changing the official app, and adds a **Themes** button at the bottom right: a library to search, preview live and apply themes; Live / Calm / Still motion; one-file sharing; and **Create**, which writes a new theme from a description.
+
+[![Cozy Room](app/themes/cozy-room/thumb.jpg)](https://zirkomirkolabs.github.io/t3code-themes/app/preview/)
+
+**Cozy Room** (the app's default) is a rainy night room with a black cat who lives on your desk. It walks behind the composer, paws the Send button, naps on its cushion and wakes up when you type. Install: get Node.js LTS, keep T3 Code running and double-click `app/START.cmd` (macOS/Linux: `app/start.sh`). See [app/README.md](app/README.md).
+
+The themes use a small, documented format (`t3theme/1`), so they can drop straight into T3 Code if it adds a theme hook.
 
 ## What is in a theme
 
@@ -60,7 +68,7 @@ themes/<id>/
   thumb.jpg    640x400 preview
 ```
 
-`player/sandbox.js` runs a theme. `index.html` is the player page, and `tools/record-clips.py` records smooth MP4 clips of any theme.
+`player/sandbox.js` runs a theme in the player. `app/` is the T3 Code add-on (launcher, runtime, theme studio and a browser playground). `index.html` is the player page, and `tools/record-clips.py` records smooth MP4 clips of any theme.
 
 ## Safety
 

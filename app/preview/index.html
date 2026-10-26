@@ -1,0 +1,93 @@
+<!doctype html><html lang="en" class="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>T3 Code Themes — playground</title><link rel="icon" href="data:,">
+<link rel="stylesheet" href="../runtime/engine.css">
+<style>
+/* A stand-in for T3's markup: same data-* hooks as the real client (runtime/selectors.js), plainer styling. */
+:root{--background:#0b0b0d;--foreground:#ececf1;--border:#2a2a30;--card:#141418;--muted-foreground:#9a9aa5;--sidebar:#0b0b0d;--primary:#888;--primary-foreground:#000;--accent:#222;--radius:.625rem;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;--font-mono:ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}html,body{margin:0;height:100%;font:14px/1.5 var(--font-sans);color:var(--foreground);background:var(--background)}
+#root{height:100%;background:var(--background)}
+[data-slot=sidebar-wrapper]{display:flex;height:100dvh}
+[data-slot=sidebar-gap]{width:256px}
+[data-slot=sidebar-container]{position:fixed;inset-block:0;left:0;width:256px;z-index:10;display:flex;border-right:1px solid var(--border)}
+[data-slot=sidebar-inner]{flex:1;display:flex;flex-direction:column;background:var(--sidebar);padding:12px 8px;gap:2px;color:var(--foreground)}
+.brand{display:flex;align-items:center;gap:10px;padding:6px 10px 14px;font-weight:600}
+.srch{display:flex;align-items:center;gap:8px;padding:6px 10px 12px;color:var(--muted-foreground)}.srch .sp{flex:1}
+.thr{padding:8px 12px;border-radius:calc(var(--radius) * .8);display:grid;gap:1px}.thr small{color:var(--muted-foreground);font-size:12px;display:flex;justify-content:space-between;align-items:center}.thr span{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thr.on{background:var(--accent)}.thr .work{display:inline-flex;align-items:center;gap:5px;color:var(--primary)}
+[data-slot=sidebar-footer]{margin-top:auto;display:flex;gap:16px;padding:8px 12px;color:var(--muted-foreground)}
+[data-slot=sidebar-inset]{flex:1;display:flex;flex-direction:column;background:var(--background);min-width:0;position:relative}
+[data-chat-header]{height:52px;display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--border);gap:10px;font-weight:600;background:var(--background)}
+[data-chat-header] small{color:var(--muted-foreground);font-weight:400}[data-chat-header] .sp{flex:1}
+.bg-background{background:var(--background)}
+.wrap{flex:1;display:flex;min-height:0}
+[data-chat-column]{flex:1;display:flex;flex-direction:column;min-height:0}
+[data-chat-canvas]{flex:1;overflow:auto;padding:26px 0;position:relative}
+.lane{max-width:768px;margin:0 auto;padding:0 24px;display:grid;gap:20px}
+.msg.user{justify-self:end;max-width:75%;padding:10px 14px;border-radius:calc(var(--radius) * 1.4);background:color-mix(in srgb,var(--primary) 18%,var(--card));border:1px solid var(--border)}
+.chat-markdown p{margin:.2em 0 .6em}.chat-markdown code{font-family:var(--font-mono);font-size:.92em}
+.chat-markdown-codeblock pre{margin:0;font:inherit;background:transparent!important}.chat-markdown-codeblock{margin:8px 0 0;padding:12px;border-radius:calc(var(--radius) * .8);font:12.5px/1.55 var(--font-mono);overflow:auto;border:1px solid var(--border);background:#111}
+.hero{display:flex;flex-direction:column;justify-content:center;flex:1;padding:0 24px}
+h1{font-size:30px;text-align:center;margin:0 0 4px;font-weight:400;letter-spacing:-.01em;display:flex;flex-direction:column;align-items:center;gap:8px}
+[data-draft-project-trigger]{border-bottom:1px dotted currentColor}
+.sub{text-align:center;color:var(--muted-foreground);margin:0 0 22px}
+[data-slot=composer-shell]{margin:0 auto 22px;width:min(736px,calc(100% - 48px));border:1px solid var(--border);border-radius:16px;background:var(--card)}
+[data-chat-composer-main-surface]{border-radius:16px;padding:14px}
+textarea.cmp{width:100%;min-height:54px;background:transparent;border:0;color:inherit;font:inherit;resize:none;outline:none}
+.cf{display:flex;align-items:center;gap:14px;color:var(--muted-foreground);font-size:13px}.cf .sp{flex:1}
+.send{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--primary);color:var(--primary-foreground);border:0}
+[data-thread-details-panel]{position:absolute;right:12px;top:64px;width:260px;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--card);font-size:13px;z-index:20}
+[data-thread-details-panel] div{display:flex;align-items:center;gap:10px;padding:6px 4px}
+svg.lucide{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+@media(max-width:760px){[data-slot=sidebar-container],[data-slot=sidebar-gap]{display:none}[data-thread-details-panel]{display:none}}
+</style></head><body>
+<div id="root"><div data-slot="sidebar-wrapper">
+ <div data-slot="sidebar" data-side="left"><div data-slot="sidebar-gap"></div><div data-slot="sidebar-container"><div data-slot="sidebar-inner">
+  <div class="brand"><svg class="lucide lucide-panel-right" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M15 3v18"/></svg>T3 Code</div>
+  <div class="srch"><svg class="lucide lucide-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Search<span class="sp"></span><svg class="lucide lucide-list-filter" viewBox="0 0 24 24"><path d="M3 6h18M7 12h10M10 18h4"/></svg><svg class="lucide lucide-folder-plus" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 11v5M9.5 13.5h5"/></svg><svg class="lucide lucide-square-pen" viewBox="0 0 24 24"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.4 2.6a2 2 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></div>
+  <div class="thr on" data-thread-item><small>my-app <span>8m</span></small><span>Add dark mode toggle</span></div>
+  <div class="thr" data-thread-item><small>my-app <span>20m</span></small><span>Fix flaky login test</span></div>
+  <div class="thr" data-thread-item><small>api-server <span>54m</span></small><span>Rate limit uploads</span></div>
+  <div class="thr" data-thread-item><small>docs-site <span>1h</span></small><span>Rewrite getting started</span></div>
+  <div class="thr" data-thread-item><small>my-app <span>3h</span></small><span>Speed up cold start</span></div>
+  <div data-slot="sidebar-footer"><svg class="lucide lucide-settings" viewBox="0 0 24 24"><path d="M12.2 2h-.4a2 2 0 0 0-2 2v.2a2 2 0 0 1-1 1.7l-.4.3a2 2 0 0 1-2 0l-.2-.1a2 2 0 0 0-2.7.7l-.2.4a2 2 0 0 0 .7 2.7l.2.1a2 2 0 0 1 1 1.7v.5a2 2 0 0 1-1 1.7l-.2.1a2 2 0 0 0-.7 2.7l.2.4a2 2 0 0 0 2.7.7l.2-.1a2 2 0 0 1 2 0l.4.3a2 2 0 0 1 1 1.7v.2a2 2 0 0 0 2 2h.4a2 2 0 0 0 2-2v-.2a2 2 0 0 1 1-1.7l.4-.3a2 2 0 0 1 2 0l.2.1a2 2 0 0 0 2.7-.7l.2-.4a2 2 0 0 0-.7-2.7l-.2-.1a2 2 0 0 1-1-1.7v-.5a2 2 0 0 1 1-1.7l.2-.1a2 2 0 0 0 .7-2.7l-.2-.4a2 2 0 0 0-2.7-.7l-.2.1a2 2 0 0 1-2 0l-.4-.3a2 2 0 0 1-1-1.7V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg><svg class="lucide lucide-git-pull-request-arrow" viewBox="0 0 24 24"><circle cx="5" cy="6" r="3"/><path d="M5 9v12"/><circle cx="19" cy="18" r="3"/><path d="m15 9-3-3 3-3M12 6h5a2 2 0 0 1 2 2v7"/></svg><svg class="lucide lucide-chart-no-axes-column" viewBox="0 0 24 24"><path d="M18 21V3M12 21V9M6 21v-6"/></svg></div>
+ </div></div></div>
+ <main data-slot="sidebar-inset">
+  <header data-chat-header>my-app <small>/</small> <span id="title">New thread</span><span class="sp"></span><svg class="lucide lucide-square-menu" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h10"/></svg><svg class="lucide lucide-panel-bottom" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15h18"/></svg><svg class="lucide lucide-panel-right" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M15 3v18"/></svg></header>
+  <div class="wrap bg-background"><div data-chat-column><div data-chat-canvas id="canvas"></div>
+   <div data-slot="composer-shell"><div data-chat-composer-main-surface="true"><textarea class="cmp" placeholder="Ask for changes, send follow-ups, or attach images"></textarea>
+    <div class="cf"><span>Opus 5.5 ▾</span><span><svg class="lucide lucide-brain" viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.9.6A4 4 0 0 0 4 12a4 4 0 0 0 4 7 3 3 0 0 0 4-1 3 3 0 0 0 4 1 4 4 0 0 0 4-7 4 4 0 0 0-2.1-6.4A3 3 0 1 0 12 5z"/></svg> High ▾</span><span><svg class="lucide lucide-lock-open" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.6-1.8"/></svg> Full access ▾</span><span class="sp"></span><svg class="lucide lucide-paperclip" viewBox="0 0 24 24"><path d="m21 11-8.6 8.6a5 5 0 0 1-7-7L14 4a3.3 3.3 0 0 1 4.7 4.7l-8.6 8.6a1.7 1.7 0 0 1-2.4-2.4L15.6 7"/></svg><button class="send" type="submit" aria-label="Send">↑</button></div>
+   </div></div>
+  </div></div>
+  <aside data-thread-details-panel id="details"><div><svg class="lucide lucide-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/></svg>local</div><div><svg class="lucide lucide-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add project script</div><div><svg class="lucide lucide-git-branch-plus" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><path d="M6 9v12M15 6h6M18 3v6"/><circle cx="18" cy="18" r="3"/><path d="M15 18a9 9 0 0 1-9-9"/></svg>Initialize Git</div></aside>
+ </main>
+</div></div>
+<template id="welcome"><div class="hero"><div><h1><span>What should we build in <span data-draft-project-trigger>my-app</span>?</span></h1><p class="sub">or start without a project</p></div></div></template>
+<template id="chat"><div class="lane">
+ <div class="msg user" data-timeline-row-id="1">Make the composer glow when I type, and keep the background calm behind the messages.</div>
+ <div class="chat-markdown" data-timeline-row-id="2"><p>Done. The composer now has a soft accent glow on focus, and the scene measures where the message list is and keeps that area calm. A scrim behind the text keeps every theme readable:</p>
+ <div class="chat-markdown-codeblock"><div class="chat-markdown-shiki"><pre class="shiki" style="background-color:#24292e;color:#e1e4e8"><code><span class="line"><span style="color:#F97583">const</span> <span style="color:#79B8FF">zones</span> <span style="color:#F97583">=</span> <span style="color:#B392F0">measureZones</span><span style="color:#E1E4E8">();</span>   <span style="color:#6A737D">// sidebar, top bar, composer, messages</span></span>
+<span class="line"><span style="color:#E1E4E8">scene.</span><span style="color:#B392F0">post</span><span style="color:#E1E4E8">({ type: </span><span style="color:#9ECBFF">'zones'</span><span style="color:#E1E4E8">, zones, fps: </span><span style="color:#79B8FF">30</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#B392F0">renderScrims</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">zones</span><span style="color:#E1E4E8">);</span>           <span style="color:#6A737D">// dim + blur behind text</span></span></code></pre></div></div><p>Detail and motion now go into the free space at the sides. See <a href="#zones">safe zones</a> and <code>api.calm()</code>.</p></div>
+ <div class="msg user" data-timeline-row-id="3">Nice. Can it work with a light theme too?</div>
+ <div class="chat-markdown" data-timeline-row-id="4"><p>Yes. Every theme is checked for contrast (WCAG 4.5:1 for text) on the background, the panels, the glass over the scene and the scrimmed scene, and repaired automatically if it falls short.</p></div>
+</div></template>
+<script src="../runtime/selectors.js"></script>
+<script src="../runtime/sandbox.js"></script>
+<script src="../runtime/engine.js"></script>
+<script>
+const q = new URLSearchParams(location.search);
+const view = q.get('view') || 'welcome';
+document.getElementById('canvas').append(document.getElementById(view === 'chat' ? 'chat' : 'welcome').content.cloneNode(true));
+document.getElementById('title').textContent = view === 'chat' ? 'Add dark mode toggle' : 'New thread';
+if (q.get('details') === '0') document.getElementById('details').remove();
+(async () => {
+  const [themes, skins] = await Promise.all([fetch('../themes/index.json').then(r => r.json()), fetch('../skins/index.json').then(r => r.json())]);
+  window.__themeProblems = themes.problems;
+  const items = themes.items.concat(skins.map(s => ({ ...s, kind: 'skin' })));
+  const pr = await fetch('../prompt.json').then(r => r.json()).catch(() => ({}));
+  T3Skin.mount({ prompt: { core: pr.core || '', tasteDefault: pr.tasteDefault || '', useTaste: true, taste: null, custom: '' }, launcher: q.get('launcher') === '1', items, active: q.get('theme') || 'cozy-room', motion: q.get('motion') || 'live', welcome: q.get('welcome') === '1', skinBase: '../skins/', themeBase: '../themes/' });
+  if (q.get('open')) T3Skin.openGallery(true);
+  if (q.get('tab')) document.querySelector('.t3s-tab[data-tab="' + q.get('tab') + '"]')?.click();
+  if (q.get('prompt')) { const d = document.querySelector('.t3s-g-prompt'); if (d) { d.open = true; if (q.get('prompt') === 'view') document.querySelector('.t3s-g-pview').click(); } }
+})();
+</script>
+</body></html>

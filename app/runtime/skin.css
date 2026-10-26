@@ -1,0 +1,179 @@
+/* Space Terminal. Every override disappears when the owned html attribute is removed. */
+html[data-space-skin='on'] {
+  color-scheme: dark;
+  background: #030810 !important;
+  --background: #08121c !important;
+  --foreground: #e0edf0 !important;
+  --card: #0c1925 !important;
+  --card-foreground: #e0edf0 !important;
+  --popover: #0d1c28 !important;
+  --popover-foreground: #e0edf0 !important;
+  --primary: #a596ff !important;
+  --primary-foreground: #041116 !important;
+  --secondary: #162a37 !important;
+  --secondary-foreground: #cfe4eb !important;
+  --muted: #10212f !important;
+  --muted-foreground: #a2b7c5 !important;
+  --accent: #183440 !important;
+  --accent-foreground: #e0f5f5 !important;
+  --border: #29404f !important;
+  --input: #355360 !important;
+  --ring: #9a8eff !important;
+  --sidebar: #07131e !important;
+  --sidebar-foreground: #d6e8ed !important;
+  --sidebar-muted-foreground: #9db5c4 !important;
+  --sidebar-border: #243d4b !important;
+  --sidebar-control-surface: #112432 !important;
+  --sidebar-row-hover: #15303c !important;
+  --sidebar-row-active: #1b3e49 !important;
+  --sidebar-row-selected: #1b3e49 !important;
+  --sidebar-stage-fade: #07131e !important;
+  --surface-raised: #0c1a27 !important;
+  --app-theme-canvas: #08121c !important;
+  --app-theme-text: #e0edf0 !important;
+  --app-theme-surface: #0c1925 !important;
+  --app-theme-surface-raised: #0c1a27 !important;
+  --app-theme-surface-overlay: #0d1c28 !important;
+  --app-theme-muted: #10212f !important;
+  --app-theme-muted-foreground: #a2b7c5 !important;
+  --app-theme-border: #29404f !important;
+  --app-theme-input: #355360 !important;
+  --app-theme-accent-surface: #183440 !important;
+  --app-theme-accent-surface-foreground: #e0f5f5 !important;
+  --app-theme-sidebar: #07131e !important;
+  --app-theme-sidebar-foreground: #d6e8ed !important;
+  --app-theme-sidebar-muted-foreground: #9db5c4 !important;
+  --app-theme-sidebar-control-surface: #112432 !important;
+  --app-theme-sidebar-row-hover: #15303c !important;
+  --app-theme-sidebar-row-active: #1b3e49 !important;
+  --app-theme-sidebar-row-selected: #1b3e49 !important;
+  --app-theme-sidebar-border: #243d4b !important;
+  --app-theme-toolbar-foreground: #b6d4dd !important;
+  --app-theme-toolbar-control-foreground: #b6d4dd !important;
+  --app-theme-toolbar-border: #29404f !important;
+  --app-theme-message-foreground: #e0edf0 !important;
+}
+
+html[data-space-skin='on'] body { background: transparent !important; isolation: isolate; }
+html[data-space-skin='on'] #root,
+html[data-space-skin='on'] [data-slot='sidebar-wrapper'],
+html[data-space-skin='on'] [data-slot='sidebar-inset'],
+/* Source-observed ChatView parent has no hook; only its direct chat-column parent qualifies. */
+html[data-space-skin='on'] div.bg-background:has(> [data-chat-column]),
+html[data-space-skin='on'] [data-chat-workspace-drop-target] > div.bg-background,
+html[data-space-skin='on'] [data-chat-workspace-drop-target] > div > div.bg-background {
+  background: transparent !important;
+}
+html[data-space-skin='on'] [data-slot='sidebar-inset'] { color: #e0edf0; }
+html[data-space-skin='on'] [data-slot='sidebar-inner'],
+html[data-space-skin='on'] [data-slot='sidebar'][data-mobile='true'] {
+  background: rgb(5 16 27 / 94%) !important;
+  border-color: #29404f !important;
+}
+html[data-space-skin='on'] [data-chat-header] {
+  background: rgb(6 16 26 / 86%) !important;
+  border-bottom: 1px solid rgb(131 207 224 / 14%);
+}
+html[data-space-skin='on'] [data-slot='composer-shell'] {
+  --chat-composer-glass-surface: #0a1a28 !important;
+  --chat-composer-outline: rgb(132 207 223 / 28%) !important;
+  --chat-composer-highlight: rgb(172 241 245 / 4%) !important;
+}
+html[data-space-skin='on'] [data-chat-composer-main-surface='true'] { background-color: rgb(8 22 34 / 88%); }
+html[data-space-skin='on'] .chat-markdown { color: #dce9ee; }
+html[data-space-skin='on'] .chat-markdown pre,
+html[data-space-skin='on'] .chat-markdown-codeblock { background-color: rgb(4 13 22 / 94%) !important; }
+/* Optional static welcome emblem: the host owns its placement above the welcome heading. */
+html[data-space-skin='on'] [data-space-emblem] {
+  white-space: pre; text-align: center; margin: 0 auto 1.6rem; width: fit-content;
+  color: #a0c3f4; font: clamp(7px, 0.8vw, 10px)/1.12 ui-monospace, Consolas, monospace;
+  letter-spacing: 0.02em; pointer-events: none; user-select: none;
+  text-shadow: 0 0 16px rgb(116 92 255 / 25%);
+}
+html[data-space-skin='on'] h1:has([data-draft-project-trigger]) { font-family: ui-monospace, Consolas, monospace; }
+html[data-space-skin='on'] [data-draft-project-trigger] { color: #b2a0ff; }
+
+html[data-space-skin='on'] .t3-space-backdrop {
+  position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+  background: #030810; contain: strict;
+}
+html[data-space-skin='on'] .t3-space-visual,
+html[data-space-skin='on'] .t3-space-shade { position: absolute; inset: 0; }
+html[data-space-skin='on'] .t3-space-art,
+html[data-space-skin='on'] .t3-space-video,
+html[data-space-skin='on'] .t3-space-ascii {
+  position: absolute; width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: 68% 42%;
+}
+html[data-space-skin='on'] .t3-space-video,
+html[data-space-skin='on'] .t3-space-ascii { display: none; }
+html[data-space-skin='on'] .t3-space-backdrop[data-mode='cinema'] .t3-space-video[data-ready='true'] { display: block; }
+html[data-space-skin='on'] .t3-space-backdrop[data-mode='ascii'] .t3-space-art { display: none; }
+html[data-space-skin='on'] .t3-space-backdrop[data-mode='ascii'] .t3-space-ascii { display: block; }
+html[data-space-skin='on'] .t3-space-shade {
+  background: linear-gradient(90deg, rgb(3 8 16 / 12%), rgb(3 8 16 / 20%) 48%, rgb(3 8 16 / 5%) 85%),
+    linear-gradient(0deg, rgb(3 8 16 / 30%), transparent 45%, rgb(3 8 16 / 8%));
+}
+html[data-space-skin='on'] .t3-space-caption {
+  position: absolute; right: 26px; bottom: 22px; display: grid; gap: 6px;
+  color: #84afb9; opacity: 0.55; font: 9px/1.4 ui-monospace, Consolas, monospace;
+  letter-spacing: 0.22em; text-align: right;
+}
+html[data-space-skin='on'] .t3-space-backdrop[data-focus='true'] .t3-space-caption { visibility: hidden; }
+
+html[data-space-skin='on'] .t3-space-controls {
+  position: fixed; z-index: 40; top: calc(env(safe-area-inset-top, 0px) + 64px);
+  right: calc(env(safe-area-inset-right, 0px) + 16px); width: max-content; max-width: calc(100vw - 24px);
+  color: #dcecf1; font: 12px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-app-region: no-drag;
+}
+html[data-space-skin='on'] .t3-space-controls * { box-sizing: border-box; }
+html[data-space-skin='on'] .t3-space-controls button {
+  appearance: none; cursor: pointer; color: #c4dce4; font: inherit; line-height: 1.4;
+  border: 1px solid #294553; border-radius: 7px; background: #102531; padding: 9px 10px;
+  min-height: 36px; white-space: nowrap;
+}
+html[data-space-skin='on'] .t3-space-controls button:hover { background: #1a3946; color: #efffff; }
+html[data-space-skin='on'] .t3-space-controls button[aria-pressed='true'] {
+  color: #c5fcff; background: #204854; border-color: #5c9da8;
+}
+html[data-space-skin='on'] .t3-space-controls :is(button, input):focus-visible {
+  outline: 2px solid #9af4f4; outline-offset: 3px;
+}
+html[data-space-skin='on'] .t3-space-controls .t3-space-toggle {
+  display: block; margin-left: auto; background: rgb(6 20 30 / 96%); border-color: #355665;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 24%); letter-spacing: 0.025em;
+}
+html[data-space-skin='on'] .t3-space-panel {
+  margin-top: 8px; width: 284px; max-width: calc(100vw - 24px); padding: 17px;
+  background: #081722; border: 1px solid #355563; border-radius: 12px;
+  box-shadow: 0 16px 48px rgb(0 0 0 / 50%); max-height: calc(100dvh - 130px); overflow-y: auto;
+}
+html[data-space-skin='on'] .t3-space-panel[hidden] { display: none !important; }
+html[data-space-skin='on'] .t3-space-heading { display: grid; gap: 4px; margin-bottom: 17px; }
+html[data-space-skin='on'] .t3-space-heading strong { font-size: 16px; font-weight: 550; color: #e8f5f8; }
+html[data-space-skin='on'] .t3-space-heading span { font: 9px/1.5 ui-monospace, Consolas, monospace; color: #91b1bf; letter-spacing: 0.16em; }
+html[data-space-skin='on'] .t3-space-modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+html[data-space-skin='on'] .t3-space-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 10px; }
+html[data-space-skin='on'] .t3-space-intensity { display: grid; grid-template-columns: 1fr auto; gap: 12px; margin: 19px 0 11px; color: #c4dce4; }
+html[data-space-skin='on'] .t3-space-intensity output { font-variant-numeric: tabular-nums; color: #9bced6; }
+html[data-space-skin='on'] .t3-space-intensity input { grid-column: 1 / -1; width: 100%; height: 22px; margin: 0; accent-color: #8bdee4; cursor: pointer; }
+html[data-space-skin='on'] .t3-space-status { margin: 10px 0 16px; min-height: 32px; color: #9fbac7; font-size: 11px; }
+html[data-space-skin='on'] .t3-space-footer { border-top: 1px solid #203b49; padding-top: 12px; display: flex; justify-content: space-between; gap: 8px; }
+html[data-space-skin='on'] .t3-space-footer .t3-space-off { color: #dfc7bb; border-color: #5a4641; background: #261f20; }
+
+@media (max-width: 640px) {
+  html[data-space-skin='on'] .t3-space-controls { right: calc(env(safe-area-inset-right, 0px) + 10px); top: calc(env(safe-area-inset-top, 0px) + 60px); }
+  html[data-space-skin='on'] .t3-space-controls button { min-height: 42px; }
+  html[data-space-skin='on'] .t3-space-controls .t3-space-toggle { min-height: 36px; padding: 7px 10px; font-size: 11px; }
+  html[data-space-skin='on'] .t3-space-panel { max-height: calc(100dvh - 160px); }
+  html[data-space-skin='on'] .t3-space-caption { display: none; }
+  html[data-space-skin='on'] .t3-space-art,
+  html[data-space-skin='on'] .t3-space-video { object-position: 75% 40%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-space-skin='on'] .t3-space-video { display: none !important; }
+}
+@media print {
+  html[data-space-skin='on'] .t3-space-backdrop,
+  html[data-space-skin='on'] .t3-space-controls { display: none !important; }
+}

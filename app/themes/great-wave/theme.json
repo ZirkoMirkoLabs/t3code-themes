@@ -1,0 +1,32 @@
+{
+  "format": "t3theme/1",
+  "id": "great-wave",
+  "name": "Great Wave",
+  "tagline": "a woodblock sea, forever about to break",
+  "description": "Ukiyo-e woodblock seascape: a towering prussian-blue wave curls its clawed foam fingers over a tiny snow-capped mountain while smaller swells roll beneath, all printed on warm washi paper grain.",
+  "category": "Ocean",
+  "tags": ["light", "ukiyo-e", "woodblock", "wave", "japanese", "ocean", "paper"],
+  "author": "T3 Skins",
+  "generated": false,
+  "appearance": "light",
+  "palette": {
+    "bg": "#efe6d0", "surface": "#f7f1e1", "text": "#13203b", "muted": "#3b4a6b",
+    "accent": "#1f4f82", "accent2": "#a8362b", "border": "#c9b994", "selection": "#8fb3d9",
+    "codeBg": "#e9dfc6", "codeText": "#16233f"
+  },
+  "sceneColors": ["#efe6d0", "#d8c7a2", "#16365e", "#2d5d8f", "#7fa6c9", "#fbf7ec", "#0f2140", "#b0392c"],
+  "fonts": {
+    "ui": "\"Segoe UI\", system-ui, sans-serif",
+    "mono": "\"Cascadia Mono\", Consolas, monospace",
+    "display": "Georgia, \"Palatino Linotype\", serif"
+  },
+  "shape": { "radius": 4, "density": "normal", "borderWidth": 1 },
+  "ui": { "surface": "paper", "glass": 0.88, "blur": 8, "shadow": "soft", "topbar": "accent-line", "decor": "double",
+          "textGlow": false, "overlay": "grain", "heroStyle": "plain", "uppercase": false },
+  "icons": { "style": "thin", "color": "accent" },
+  "loader": { "style": "pulse" },
+  "motion": { "fps": 30, "resolution": 0.8, "interactive": false },
+  "scene": { "file": "scene.js", "params": { "curl": 1 } },
+  "welcome": { "file": "welcome.js", "height": 140, "text": "Great Wave" },
+  "textSafety": { "scrim": 0.55, "heroScrim": 0.35, "blur": 4, "busy": "medium" }
+}

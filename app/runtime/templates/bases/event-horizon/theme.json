@@ -1,0 +1,29 @@
+{
+  "format": "t3theme/1",
+  "id": "event-horizon",
+  "name": "Event Horizon",
+  "tagline": "do not go gentle",
+  "description": "Cinematic deep space: a lensed black hole with a blazing accretion disk, a photon ring and bent starlight. Wide display type and a light-beam title reveal.",
+  "category": "Space",
+  "tags": ["dark", "space", "cinematic", "black hole", "interstellar", "webgl"],
+  "author": "T3 Skins",
+  "appearance": "dark",
+  "palette": {
+    "bg": "#030409", "surface": "#0b0e17", "text": "#eceff6", "muted": "#a2abc0",
+    "accent": "#ffb562", "accent2": "#8fd6ff", "border": "#1c2232", "selection": "#ffb562",
+    "codeBg": "#06080f", "codeText": "#dfe6f5"
+  },
+  "sceneColors": ["#030409", "#fff1d6", "#ff9a3c", "#7fc8ff"],
+  "fonts": {
+    "display": "Bahnschrift, DIN Alternate, Segoe UI, sans-serif"
+  },
+  "shape": { "radius": 6, "density": "normal", "borderWidth": 1 },
+  "ui": { "surface": "glass", "glass": 0.72, "blur": 18, "shadow": "soft", "topbar": "glass", "decor": "none",
+          "heroStyle": "glow", "overlay": "grain", "cursorLight": false, "hideStageArt": true, "uppercase": true },
+  "icons": { "style": "thin", "color": "muted" },
+  "loader": { "style": "orbit" },
+  "motion": { "fps": 30, "resolution": 0.7, "interactive": false },
+  "scene": { "file": "scene.js", "params": { "spin": 0.35, "size": 1 } },
+  "welcome": { "file": "welcome.js", "height": 130, "text": "EVENT HORIZON" },
+  "textSafety": { "scrim": 0.5, "heroScrim": 0.3, "blur": 4, "busy": "medium" }
+}
