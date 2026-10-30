@@ -1,0 +1,102 @@
+{
+  "format": "t3theme/1",
+  "id": "viral-origami",
+  "name": "Midnight Fold",
+  "tagline": "Fold your idea into shape. Then let it fly.",
+  "description": "A midnight sky of washi cranes and paper boats, every crease caught by moonlight. Giants glide past the edges while a thousand small folds drift far away. Move the pointer and the flock bends around it; click and a fresh square folds itself into a crane.",
+  "category": "Viral",
+  "tags": [
+    "viral",
+    "origami",
+    "cranes",
+    "washi",
+    "night",
+    "interactive"
+  ],
+  "author": "T3 Code Themes",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#0a0e2a",
+    "surface": "#121940",
+    "text": "#f2f4ff",
+    "muted": "#aab3e0",
+    "accent": "#ff6a4a",
+    "accent2": "#ffc23d",
+    "border": "#323f7c",
+    "selection": "#2c3b86",
+    "codeBg": "#080b22",
+    "codeText": "#e3e7ff"
+  },
+  "sceneColors": [
+    "#e8432c",
+    "#3466f0",
+    "#f4b324",
+    "#1fae84",
+    "#05071c",
+    "#1d1c5c",
+    "#8fa4ff",
+    "#fff3e6"
+  ],
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Bahnschrift, Segoe UI, sans-serif"
+  },
+  "shape": {
+    "radius": 2,
+    "density": "normal",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "paper",
+    "glass": 0.9,
+    "blur": 10,
+    "shadow": "hard",
+    "topbar": "accent-line",
+    "decor": "brackets",
+    "textGlow": false,
+    "overlay": "grain",
+    "heroStyle": "gradient",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "thin",
+    "color": "accent",
+    "custom": {
+      "settings": "icons/settings.svg",
+      "search": "icons/search.svg",
+      "new-thread": "icons/new-thread.svg",
+      "folder": "icons/folder.svg",
+      "folder-plus": "icons/folder-plus.svg",
+      "plus": "icons/plus.svg",
+      "check": "icons/check.svg",
+      "clock": "icons/clock.svg",
+      "menu": "icons/menu.svg"
+    }
+  },
+  "loader": {
+    "style": "blocks"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.75,
+    "interactive": true
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {}
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 190,
+    "text": "fold your idea into shape",
+    "params": {}
+  },
+  "textSafety": {
+    "scrim": 0.62,
+    "heroScrim": 0.4,
+    "blur": 8,
+    "busy": "medium"
+  }
+}

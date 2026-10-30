@@ -1,0 +1,64 @@
+{
+  "format": "t3theme/1",
+  "id": "viral-liquid-chrome",
+  "name": "Liquid Chrome",
+  "tagline": "Pour your idea in. It comes out polished.",
+  "description": "Your whole screen is a mirror pool of mercury under big studio softboxes. Move to trail a smooth wake across the surface. Click to drop a bead that splashes into a crown, rebounds and rings out to nothing.",
+  "category": "Viral",
+  "tags": ["viral", "chrome", "mercury", "liquid", "interactive", "metal", "webgl"],
+  "author": "T3 Code Themes",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#0e1014",
+    "surface": "#15181d",
+    "text": "#f3f5f8",
+    "muted": "#b3bac4",
+    "accent": "#cfd8e4",
+    "accent2": "#8e9cb0",
+    "border": "#6b7380",
+    "selection": "#33404f",
+    "codeBg": "#0b0d11",
+    "codeText": "#e9edf2"
+  },
+  "sceneColors": ["#1a1d23", "#c9d2de", "#ffffff", "#a3acb8"],
+  "fonts": {
+    "ui": "\"Segoe UI\", system-ui, sans-serif",
+    "mono": "\"Cascadia Mono\", Consolas, monospace",
+    "display": "\"Segoe UI Black\", \"Arial Black\", Bahnschrift, sans-serif"
+  },
+  "shape": { "radius": 18, "density": "normal", "borderWidth": 2 },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.9,
+    "blur": 20,
+    "shadow": "soft",
+    "topbar": "solid",
+    "sidebarSide": "left",
+    "decor": "double",
+    "textGlow": false,
+    "overlay": "none",
+    "heroStyle": "gradient",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "default",
+    "color": "accent",
+    "custom": {
+      "settings": "icons/settings.svg",
+      "search": "icons/search.svg",
+      "new-thread": "icons/new-thread.svg",
+      "folder": "icons/folder.svg",
+      "folder-plus": "icons/folder-plus.svg",
+      "plus": "icons/plus.svg",
+      "filter": "icons/filter.svg",
+      "check": "icons/check.svg",
+      "clock": "icons/clock.svg"
+    }
+  },
+  "loader": { "style": "bounce" },
+  "motion": { "fps": 30, "resolution": 0.7, "interactive": true },
+  "scene": { "file": "scene.js", "params": {} },
+  "welcome": { "file": "welcome.js", "height": 170, "text": "pour it in", "params": {} },
+  "textSafety": { "scrim": 0.8, "heroScrim": 0.5, "blur": 10, "busy": "medium" }
+}

@@ -87,7 +87,7 @@ html[data-t3-skin='on'] .t3s-controls {
   -webkit-app-region: no-drag; -webkit-font-smoothing: antialiased; }
 html[data-t3-skin='on'] .t3s-controls * { box-sizing: border-box; }
 html[data-t3-skin='on'] .t3s-controls [hidden] { display: none !important; }
-html[data-t3-skin='on'] .t3s-controls:has(.t3s-gallery[hidden]) { bottom: calc(env(safe-area-inset-bottom, 0px) + 14px + var(--t3s-control-lift, 0px)); }
+html[data-t3-skin='on'] .t3s-controls:has(.t3s-gallery[hidden]) { right: var(--t3s-control-right, 14px); bottom: calc(env(safe-area-inset-bottom, 0px) + 14px + var(--t3s-control-lift, 0px)); }
 html[data-t3-skin='on'] .t3s-i { display: inline-flex; flex: none; }
 html[data-t3-skin='on'] .t3s-i svg { display: block; }
 

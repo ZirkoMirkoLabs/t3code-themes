@@ -200,7 +200,14 @@
     var glass = 'background:var(--t3s-glass) !important;-webkit-backdrop-filter:blur(var(--t3s-blur)) saturate(1.2);backdrop-filter:blur(var(--t3s-blur)) saturate(1.2)';
     r(L.sidebarInner.sel + ",[data-slot='sidebar'][data-mobile='true']", glass + ';border-color:var(--t3s-border) !important');
     r(L.sidebarContainer.sel, 'border-color:var(--t3s-border) !important;border-right-width:var(--t3s-bw) !important');
-    r(L.details.sel, 'border-radius:calc(var(--t3s-radius) * 1.2)');
+    r(L.details.sel, glass + ';color:var(--t3s-text);border:var(--t3s-bw) solid var(--t3s-border);border-radius:calc(var(--t3s-radius) * 1.2)');
+    r(L.sidebarShelf.sel, 'background:var(--sidebar-control-surface);color:var(--t3s-muted);border:var(--t3s-bw) solid var(--t3s-border);border-radius:var(--t3s-radius)');
+    r(':is(' + L.sidebarShelf.sel + '):is(:hover,[aria-expanded="true"])', 'background:var(--sidebar-row-hover);color:var(--t3s-text)');
+    r(L.statusChip.sel, 'color:var(--t3s-muted) !important;border-radius:var(--t3s-radius);text-shadow:none');
+    r(L.workingChip.sel, 'color:var(--t3s-link) !important');
+    r(L.threadRow.sel, 'opacity:1');
+    r(L.headerButton.sel, 'color:var(--t3s-muted);border-radius:var(--t3s-radius)');
+    r(':is(' + L.headerButton.sel + '):is(:hover,[aria-pressed="true"])', 'background:var(--accent) !important;color:var(--t3s-text) !important;border-color:var(--t3s-border)');
     var hdr = { glass: 'background:color-mix(in srgb,var(--t3s-surface) 62%,transparent) !important;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:var(--t3s-bw) solid color-mix(in srgb,var(--t3s-accent) 20%,transparent)',
       solid: 'background:var(--t3s-surface) !important;border-bottom:var(--t3s-bw) solid var(--t3s-border)',
       transparent: 'background:transparent !important;border-bottom:0',
@@ -214,6 +221,11 @@
     r(L.composerSurface.sel, 'background-color:var(--t3s-surface) !important;color:var(--t3s-text);' +
       '-webkit-backdrop-filter:none !important;backdrop-filter:none !important;border-radius:calc(var(--t3s-radius) * 1.6)');
     r(L.composerEditor.sel, 'color:var(--t3s-text) !important;caret-color:var(--t3s-text);text-shadow:none');
+    r(L.composerFooter.sel + ',' + L.composerControls.sel, 'color:var(--t3s-text);background:transparent');
+    r(L.composerModel.sel, 'color:var(--t3s-text) !important;border-radius:var(--t3s-radius)');
+    // 0.1.6 places permissions outside the editing plane. Give that strip its own backing.
+    r(L.composerContext.sel, 'background:var(--t3s-glass-strong);color:var(--t3s-muted);border:var(--t3s-bw) solid var(--t3s-border);border-radius:var(--t3s-radius);padding-bottom:4px;margin-top:4px');
+    r(L.composerPermission.sel, 'color:var(--t3s-muted) !important;border-radius:var(--t3s-radius)');
     r(L.composer.sel + ':focus-within', 'box-shadow:' + (u.shadow === 'hard' ? '6px 6px 0 var(--t3s-accent)' : (sh === 'none' ? '' : sh + ',') + '0 0 0 2px var(--t3s-accent)'));
     r(L.composerAction.sel, 'background:var(--message-action) !important;color:var(--message-action-foreground) !important', ROOT);
     r(L.composerAction.sel + ':enabled:hover', 'background:var(--message-action-hover) !important', ROOT);
@@ -274,7 +286,7 @@
     r("button[data-slot='button']:active:not(:disabled)", 'transform:translateY(1px)');
     r("button[data-slot='button']:focus-visible,[data-slot='toggle']:focus-visible", 'outline:2px solid var(--t3s-accent) !important;outline-offset:2px');
     // Sidebar rows: quiet accent tint plus a small pill marker on the current conversation.
-    r(L.menuButton.sel + ',' + "[data-thread-item] [role='button']", 'transition:background-color .15s ease,color .15s ease');
+    r(L.menuButton.sel + ',' + L.threadRow.sel, 'transition:background-color .15s ease,color .15s ease');
     r(L.activeThread.sel, 'position:relative;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--t3s-accent) 18%,transparent) !important');
     r(L.activeThread.sel + '::before', "content:'';position:absolute;left:3px;top:28%;bottom:28%;width:3px;border-radius:3px;background:var(--t3s-accent);opacity:.85");
     // Chat content: links, inline code, blocks, quotes, tables.
@@ -523,7 +535,14 @@
   }
 
   /* ---------- safe zones (text-aware scene) ---------- */
-  function rectOf(e, pad) { if (!e) return null; var r = e.getBoundingClientRect(); if (r.width < 4 || r.height < 4 || r.right < 0 || r.left > innerWidth || r.bottom < 0 || r.top > innerHeight) return null; pad = pad || 0; return { x: r.left - pad, y: r.top - pad, w: r.width + 2 * pad, h: r.height + 2 * pad }; }
+  function rectOf(e, pad) {
+    if (!e || e.closest('[inert]') || (e.checkVisibility && !e.checkVisibility({ checkVisibilityCSS: true, checkOpacity: true }))) return null;
+    var r = e.getBoundingClientRect();
+    if (r.width < 4 || r.height < 4 || r.right <= 0 || r.left >= innerWidth || r.bottom <= 0 || r.top >= innerHeight) return null;
+    pad = pad || 0;
+    var l = Math.max(0, r.left - pad), t = Math.max(0, r.top - pad);
+    return { x: l, y: t, w: Math.min(innerWidth, r.right + pad) - l, h: Math.min(innerHeight, r.bottom + pad) - t };
+  }
   // Union of the rendered text inside an element (block boxes are often full width; the words are not).
   function textBounds(root, pad) {
     var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), n, l = Infinity, t = Infinity, r = -Infinity, b = -Infinity, rg = document.createRange();
@@ -538,31 +557,49 @@
   function measureZones() {
     var z = [], Z = SEL.zones;
     function add(kind, r) { if (r) { r.kind = kind; z.push(r); } }
-    var side = rectOf(q(Z.sidebar)); if (side && side.x > -10) add('sidebar', side);
-    var head = rectOf(q(Z.topbar)); add('topbar', head);
-    var comp = rectOf(q(Z.composer), 6); add('composer', comp);
-    add('details', rectOf(q(Z.details), 6));
-    var hero = q(Z.hero); if (hero) add('hero', textBounds(hero.parentElement || hero, 18));
+    ['sidebar', 'topbar', 'composer', 'details'].forEach(function (kind) {
+      qa(Z[kind]).forEach(function (e) { add(kind, rectOf(e, kind === 'composer' || kind === 'details' ? 6 : 0)); });
+    });
+    qa(Z.hero).forEach(function (hero) { if (rectOf(hero)) add('hero', textBounds(hero.parentElement || hero, 18)); });
     // Message lane: horizontal extent of visible timeline rows, from the top bar down to the composer.
-    var rows = qa(SEL.layout.timelineRow.sel), l = Infinity, rr = -Infinity;
-    for (var i = 0; i < rows.length && i < 80; i++) { var b = rows[i].getBoundingClientRect(); if (b.bottom < 0 || b.top > innerHeight || b.width < 4) continue; l = Math.min(l, b.left); rr = Math.max(rr, b.right); }
+    var columns = qa(SEL.layout.chatColumn.sel); if (!columns.length) columns = [document];
+    columns.forEach(function (column) {
+    var head = rectOf(column.querySelector(Z.topbar)), comp = rectOf(column.querySelector(Z.composer), 6);
+    var rows = column.querySelectorAll(SEL.layout.timelineRow.sel), l = Infinity, rr = -Infinity;
+    for (var i = 0; i < rows.length && i < 80; i++) { var b = rectOf(rows[i]); if (!b) continue; l = Math.min(l, b.x); rr = Math.max(rr, b.x + b.w); }
     if (rows.length) {
       if (!isFinite(l) && comp) { l = comp.x; rr = comp.x + comp.w; }
       if (isFinite(l)) { var top = head ? head.y + head.h : 0, bottom = comp ? comp.y : innerHeight; if (bottom - top > 20) add('messages', { x: l - 18, y: top, w: rr - l + 36, h: bottom - top }); }
     }
-    if (comp) add('send', rectOf(q(SEL.layout.composerAction.sel)));   // the send button, for scenes that interact with it
+    });
+    // Avoid spending the shader's eight rectangle slots on controls already inside a panel.
+    ['controls', 'context', 'shelf', 'status'].forEach(function (kind) {
+      qa(Z[kind]).forEach(function (e) {
+        var r = rectOf(e); if (!r) return;
+        if (!z.some(function (p) { return r.x >= p.x && r.y >= p.y && r.x + r.w <= p.x + p.w && r.y + r.h <= p.y + p.h; })) add(kind, r);
+      });
+    });
+    qa(SEL.layout.composerAction.sel).forEach(function (e) { add('send', rectOf(e)); }); // scene interaction target
     return z;
   }
   function zonesKey(z) { return z.map(function (r) { return r.kind + Math.round(r.x) + ',' + Math.round(r.y) + ',' + Math.round(r.w) + ',' + Math.round(r.h); }).join('|'); }
   function updateZones(s, force) {
     if (!current || current !== s) return;
     var z = s.mode === 'full' ? measureZones() : [], key = zonesKey(z);
-    // Keep the launcher out of the editor/send target on narrow chat columns.
-    var comp = z.filter(function (r) { return r.kind === 'composer'; })[0] || rectOf(q(SEL.zones.composer), 6);
-    if (s.toggle && s.controls) {
+    // Place Themes in free space, including when a right panel or multiple composers are open.
+    if (s.toggle && s.controls && s.gallery.hidden) {
       var toggle = s.toggle.getBoundingClientRect(), x = innerWidth - 14 - toggle.width, y = innerHeight - 14 - toggle.height;
-      var overlaps = comp && x < comp.x + comp.w && x + toggle.width > comp.x && y < comp.y + comp.h && y + toggle.height > comp.y;
-      s.controls.style.setProperty('--t3s-control-lift', (overlaps && comp.y > toggle.height + 30 ? Math.max(0, innerHeight - comp.y - 6) : 0) + 'px');
+      var blocks = z.filter(function (r) { return r.kind !== 'send'; }), xs = [x], ys = [y];
+      blocks.forEach(function (b) { xs.push(b.x - toggle.width - 12); ys.push(b.y - toggle.height - 12); });
+      var candidates = [];
+      xs.forEach(function (cx) { ys.forEach(function (cy) {
+        if (cx < 10 || cy < 10 || cx > x || cy > y) return;
+        if (!blocks.some(function (b) { return cx < b.x + b.w && cx + toggle.width > b.x && cy < b.y + b.h && cy + toggle.height > b.y; })) candidates.push({ x: cx, y: cy });
+      }); });
+      candidates.sort(function (a, b) { return (x - a.x + (y - a.y) * 2) - (x - b.x + (y - b.y) * 2); });
+      var pos = candidates[0] || { x: x, y: y };
+      s.controls.style.setProperty('--t3s-control-right', (innerWidth - pos.x - toggle.width) + 'px');
+      s.controls.style.setProperty('--t3s-control-lift', (y - pos.y) + 'px');
     }
     if (!force && key === s.zonesKey) return;
     s.zones = z; s.zonesKey = key;
@@ -1274,7 +1311,7 @@
     return { useTaste: s.promptUse.checked, taste: s.promptEdited() ? s.promptTaste.value : null, custom: s.promptCustom.value };
   }
   /* ---------- pointer → scene ---------- */
-  var UI_SEL = "button,a,input,textarea,select,label,[role='button'],[contenteditable],.t3s-controls," + [SEL.zones.sidebar, SEL.zones.topbar, SEL.zones.composer, SEL.zones.details].join(',');
+  var UI_SEL = "button,a,input,textarea,select,label,[role='button'],[role='treeitem'],[contenteditable],.t3s-controls," + Object.keys(SEL.zones).map(function (k) { return SEL.zones[k]; }).join(',');
   function onPointer(s, e, kind) {
     if (!s.box && !s.comp) return;
     var over = false;

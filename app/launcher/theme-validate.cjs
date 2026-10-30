@@ -13,7 +13,7 @@ const ID = /^[a-z0-9][a-z0-9-]{0,47}$/;
 const COLOR = /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i;
 const MAX_CODE = 96 * 1024;
 const MAX_ICON = 8 * 1024;
-const CATEGORIES = ['Space', 'Cartoon', 'Retro', 'Cozy', 'Interactive', 'Minimal', 'Nature', 'Neon', 'ASCII', 'Ocean', 'Abstract', 'Seasonal', 'Fandom', 'Other'];
+const CATEGORIES = ['Space', 'Cartoon', 'Retro', 'Cozy', 'Interactive', 'Minimal', 'Nature', 'Neon', 'ASCII', 'Ocean', 'Abstract', 'Seasonal', 'Fandom', 'Viral', 'Other'];
 const ENUMS = {
   appearance: ['light', 'dark'],
   density: ['compact', 'normal', 'roomy'],

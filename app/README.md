@@ -2,7 +2,7 @@
 
 A Themes add-on for [T3 Code](https://github.com/pingdotgg/t3code). It opens the real T3 Code client in its own window and adds a **Themes** button at the bottom right. Pick a theme and the whole app changes: colours, fonts, panels, an animated background and a title animation. The official app is not modified.
 
-It ships with 17 themes. **Cozy Room** is the default: a rainy night room with a black cat who lives on your desk. The cat walks behind the composer, paws the Send button, naps on its cushion and wakes up when you type. [Watch the 50-second video](../media/themes-proposal.mp4).
+It ships with 25 themes, including the 8 in the Viral category. **Cozy Room** is the default: a rainy night room with a black cat who lives on your desk. The cat walks behind the composer, paws the Send button, naps on its cushion and wakes up when you type. [Watch the 50-second video](../media/themes-proposal.mp4).
 
 ## Install (3 steps)
 

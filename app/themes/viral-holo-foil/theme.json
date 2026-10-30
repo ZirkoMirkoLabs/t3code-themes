@@ -1,0 +1,102 @@
+{
+  "format": "t3theme/1",
+  "id": "viral-holo-foil",
+  "name": "Holo Foil: Rare Pull",
+  "tagline": "Pull something legendary. Tilt it under the lamp.",
+  "description": "Your whole workspace is one sheet of holographic card foil: prism rainbows, cosmos glitter, gold starbursts. Move to tilt it under the lamp, click to pop the perforation and let the light out. Every build is a 1 of 1.",
+  "category": "Viral",
+  "tags": [
+    "viral",
+    "holo",
+    "foil",
+    "tcg",
+    "interactive",
+    "dark",
+    "rainbow"
+  ],
+  "author": "T3 Code Themes",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#05070f",
+    "surface": "#0c1022",
+    "text": "#f4f6ff",
+    "muted": "#aab4d2",
+    "accent": "#7fe8ff",
+    "accent2": "#ff8ae8",
+    "border": "#34406e",
+    "selection": "#1d3352",
+    "codeBg": "#070a17",
+    "codeText": "#e8ecff"
+  },
+  "sceneColors": [
+    "#5ee7ff",
+    "#ff5cd6",
+    "#6b4bff",
+    "#ffc857",
+    "#9a6a1c",
+    "#ffffff"
+  ],
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Arial Black, Bahnschrift, Impact, sans-serif"
+  },
+  "shape": {
+    "radius": 12,
+    "density": "normal",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.9,
+    "blur": 14,
+    "shadow": "glow",
+    "topbar": "accent-line",
+    "decor": "double",
+    "textGlow": false,
+    "overlay": "vignette",
+    "heroStyle": "gradient",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "thin",
+    "color": "accent",
+    "custom": {
+      "settings": "icons/settings.svg",
+      "new-thread": "icons/new-thread.svg",
+      "search": "icons/search.svg",
+      "folder": "icons/folder.svg",
+      "folder-plus": "icons/folder-plus.svg",
+      "plus": "icons/plus.svg",
+      "check": "icons/check.svg",
+      "stats": "icons/stats.svg",
+      "clock": "icons/clock.svg",
+      "lock": "icons/lock.svg"
+    }
+  },
+  "loader": {
+    "style": "pulse"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.75,
+    "interactive": true
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {}
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 190,
+    "text": "RARE PULL",
+    "params": {}
+  },
+  "textSafety": {
+    "scrim": 0.76,
+    "heroScrim": 0.6,
+    "blur": 10,
+    "busy": "medium"
+  }
+}

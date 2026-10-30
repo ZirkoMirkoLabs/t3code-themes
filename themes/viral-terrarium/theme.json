@@ -1,0 +1,105 @@
+{
+  "format": "t3theme/1",
+  "id": "viral-terrarium",
+  "name": "Pocket Eden",
+  "tagline": "A whole golden-hour valley in a jar. You are the weather.",
+  "description": "Lean over a giant glass terrarium at sunset: hills, a waterfall, cottages, wandering sheep and fogged glass. Your cursor is a god-light that wakes flowers and stirs trees. Tap the ground to plant a tree; tap the sky for rain and then a rainbow.",
+  "category": "Viral",
+  "tags": [
+    "viral",
+    "terrarium",
+    "god-game",
+    "sunset",
+    "interactive",
+    "nature"
+  ],
+  "author": "T3 Code Themes",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#061b1a",
+    "surface": "#0b2624",
+    "text": "#ecf7ee",
+    "muted": "#a3c4b2",
+    "accent": "#8fe36b",
+    "accent2": "#ffc35a",
+    "border": "#2b5f4c",
+    "selection": "#2c5e44",
+    "codeBg": "#041413",
+    "codeText": "#d9f0e0"
+  },
+  "sceneColors": [
+    "#0b2c3a",
+    "#5a4470",
+    "#e9824f",
+    "#ffcf7a",
+    "#47607a",
+    "#2a6142",
+    "#3f8a3c",
+    "#3fb3ae"
+  ],
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Bahnschrift, Segoe UI, sans-serif"
+  },
+  "shape": {
+    "radius": 22,
+    "density": "normal",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.84,
+    "blur": 16,
+    "shadow": "glow",
+    "topbar": "solid",
+    "decor": "double",
+    "textGlow": false,
+    "overlay": "vignette",
+    "heroStyle": "gradient",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "thin",
+    "color": "accent",
+    "custom": {
+      "settings": "icons/settings.svg",
+      "new-thread": "icons/new-thread.svg",
+      "search": "icons/search.svg",
+      "folder": "icons/folder.svg",
+      "folder-plus": "icons/folder-plus.svg",
+      "plus": "icons/plus.svg",
+      "brain": "icons/brain.svg",
+      "stats": "icons/stats.svg",
+      "branch": "icons/branch.svg",
+      "check": "icons/check.svg",
+      "clock": "icons/clock.svg",
+      "menu": "icons/menu.svg"
+    }
+  },
+  "loader": {
+    "style": "bounce"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.75,
+    "interactive": true
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {}
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 150,
+    "text": "grow something small",
+    "params": {}
+  },
+  "textSafety": {
+    "scrim": 0.62,
+    "heroScrim": 0.4,
+    "blur": 8,
+    "busy": "medium"
+  }
+}

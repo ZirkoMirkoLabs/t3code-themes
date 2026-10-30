@@ -1,0 +1,105 @@
+{
+  "format": "t3theme/1",
+  "id": "viral-jelly",
+  "name": "Jelly Friend",
+  "tagline": "Poke an idea. It jiggles back.",
+  "description": "A giant translucent jelly lives in the corner of your screen, glowing from the inside and full of tiny bubbles. Hover to dent it, click for a big boing that squishes it, makes it blink and sometimes slurps a gummy off the plate. Ship code; get wobbled.",
+  "category": "Viral",
+  "tags": [
+    "viral",
+    "jelly",
+    "gummy",
+    "interactive",
+    "dark",
+    "candy",
+    "webgl"
+  ],
+  "author": "T3 Code Themes",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#030405",
+    "surface": "#110f18",
+    "text": "#f6f4ff",
+    "muted": "#b9b3cf",
+    "accent": "#5ef2c2",
+    "accent2": "#ff5c8a",
+    "border": "#2f2944",
+    "selection": "#2b2446",
+    "codeBg": "#0a0911",
+    "codeText": "#ece8ff"
+  },
+  "sceneColors": [
+    "#1fe0b0",
+    "#0a5c55",
+    "#e6fff6",
+    "#ff4f7b",
+    "#a77bff",
+    "#ffb347",
+    "#bfe8ff"
+  ],
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "Segoe UI Black, Arial Black, sans-serif"
+  },
+  "shape": {
+    "radius": 26,
+    "density": "roomy",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.86,
+    "blur": 18,
+    "shadow": "glow",
+    "topbar": "solid",
+    "decor": "none",
+    "textGlow": false,
+    "overlay": "vignette",
+    "heroStyle": "gradient",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "cartoon",
+    "color": "accent",
+    "custom": {
+      "settings": "icons/settings.svg",
+      "search": "icons/search.svg",
+      "new-thread": "icons/new-thread.svg",
+      "folder": "icons/folder.svg",
+      "folder-plus": "icons/folder-plus.svg",
+      "plus": "icons/plus.svg",
+      "filter": "icons/filter.svg",
+      "branch": "icons/branch.svg",
+      "stats": "icons/stats.svg",
+      "brain": "icons/brain.svg",
+      "clip": "icons/clip.svg",
+      "check": "icons/check.svg"
+    }
+  },
+  "loader": {
+    "style": "bounce"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.7,
+    "interactive": true
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {}
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 150,
+    "text": "poke an idea",
+    "params": {}
+  },
+  "textSafety": {
+    "scrim": 0.74,
+    "heroScrim": 0.55,
+    "blur": 8,
+    "busy": "medium"
+  }
+}

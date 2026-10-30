@@ -21,7 +21,7 @@ Reply with ONE JSON object and nothing else (no markdown fences, no commentary):
 }
 
 ## theme fields (all validated; unknown keys are dropped, enums are strict, numbers are clamped)
-- name (≤ 40 chars, original), tagline (≤ 80), description (≤ 300), category: one of Space, Cartoon, Retro, Cozy, Interactive, Minimal, Nature, Neon, ASCII, Ocean, Abstract, Seasonal, Fandom, Other. tags: up to 8 short words.
+- name (≤ 40 chars, original), tagline (≤ 80), description (≤ 300), category: one of Space, Cartoon, Retro, Cozy, Interactive, Minimal, Nature, Neon, ASCII, Ocean, Abstract, Seasonal, Fandom, Viral, Other. tags: up to 8 short words.
 - appearance: "light" | "dark"
 - palette: #hex colours: bg, surface (panels), text, muted (secondary text), accent, accent2, border, selection, codeBg, codeText.
   Contrast is checked with WCAG and auto-repaired, but aim for: text vs bg and surface ≥ 7:1, muted ≥ 4.5:1, accent vs bg ≥ 3:1. Checks include raised/glass panels, hovered/selected sidebar rows, selected text/code and primary button labels. Panels are semi-transparent over the scene. Selection is a 40% tint retaining the text/code foreground; avoid tints that wash out text. The button label colour (onAccent) is derived automatically.

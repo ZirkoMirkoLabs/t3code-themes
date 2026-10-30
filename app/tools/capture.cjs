@@ -1,8 +1,11 @@
 // Renders playground screenshots of themes/skins. Needs `node tools/preview-server.mjs` running.
 //   electron tools/capture.cjs [ids...] [--view welcome|chat] [--open] [--query 'prompt=view&launcher=1'] [--size 1440x900] [--wait 2600] [--out dir] [--motion still] [--thumbs]
 // --thumbs also writes themes/<id>/thumb.jpg (640 px wide, Themes button hidden) used by the library cards and detail pane.
+// --offscreen uses an actively painted headless surface, including worker canvases in Still mode.
 // Prints one JSON line per capture: id, file, engine state, scene status and any console errors.
 'use strict';
+// EPIPE-safe: a closed stdout (parent stopped) must not pop an Electron error dialog.
+for (const s of [process.stdout, process.stderr]) s.on('error', () => {});
 const { app, BrowserWindow } = require('electron');
 const fs = require('node:fs'); const path = require('node:path');
 const argv = process.argv.slice(2);
@@ -16,7 +19,7 @@ app.commandLine.appendSwitch('force-device-scale-factor', '1');
 app.whenReady().then(async () => {
   const base = 'http://127.0.0.1:43872';
   const list = ids.length ? ids : (await (await fetch(base + '/themes/index.json')).json()).items.map(s => s.id);
-  const win = new BrowserWindow({ width: W, height: H, show: false, useContentSize: true, webPreferences: { backgroundThrottling: false } });
+  const win = new BrowserWindow({ width: W, height: H, show: false, useContentSize: true, webPreferences: { backgroundThrottling: false, offscreen: argv.includes('--offscreen') } });
   const errors = [];
   win.webContents.on('console-message', (e, level, msg) => { const m = typeof e?.message === 'string' ? e.message : msg; const l = typeof e?.level === 'string' ? e.level : level; if (l === 'error' || l === 3 || /error/i.test(m)) errors.push(String(m).slice(0, 200)); });
   for (const id of list) {
@@ -25,6 +28,7 @@ app.whenReady().then(async () => {
     // Thumbnails: hide the Themes button before the scene settles (a hidden window may not repaint later).
     if (argv.includes('--thumbs')) await win.webContents.executeJavaScript("new Promise(r => { const t = setInterval(() => { const c = document.querySelector('.t3s-controls'); if (c) { c.style.display = 'none'; clearInterval(t); r(1); } }, 20); setTimeout(() => r(0), 3000); })");
     await new Promise(r => setTimeout(r, wait));
+    if (argv.includes('--offscreen')) { win.webContents.invalidate(); await new Promise(r => setTimeout(r, 150)); }
     const state = await win.webContents.executeJavaScript('window.T3Skin && T3Skin.getState()');
     const img = await win.webContents.capturePage();
     const file = path.join(out, `${id}-${view}${open ? '-gallery' : ''}${W < 800 ? '-phone' : ''}.png`);

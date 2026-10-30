@@ -1,0 +1,61 @@
+{
+  "format": "t3theme/1",
+  "id": "viral-riso-fold",
+  "name": "Riso Fold",
+  "tagline": "Three inks. Zero registration. Fold it again.",
+  "description": "A risograph zine that never ends: fluoro pink, medium blue and sunflower yellow plates, printed slightly wrong on ink-navy stock and folded into a tunnel you fall through forever. Steer the vanishing point with your pointer. Click to snap a crease down the whole stack.",
+  "category": "Viral",
+  "tags": ["viral", "riso", "zine", "halftone", "tunnel", "interactive", "dark"],
+  "author": "T3 Code Themes",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#0a0d24",
+    "surface": "#121738",
+    "text": "#f4f5ff",
+    "muted": "#b7bce6",
+    "accent": "#ff48b0",
+    "accent2": "#ffc21a",
+    "border": "#343c7c",
+    "selection": "#5a2a7a",
+    "codeBg": "#080a1c",
+    "codeText": "#e9ebff"
+  },
+  "sceneColors": ["#ff48b0", "#3255a4", "#ffc21a", "#f2f4ff"],
+  "fonts": {
+    "ui": "Segoe UI, system-ui, sans-serif",
+    "mono": "Cascadia Mono, Consolas, monospace",
+    "display": "\"Bahnschrift Condensed\", \"Bahnschrift SemiBold Condensed\", Impact, \"Arial Narrow\", sans-serif"
+  },
+  "shape": { "radius": 0, "density": "normal", "borderWidth": 2 },
+  "ui": {
+    "surface": "solid",
+    "glass": 0.95,
+    "blur": 0,
+    "shadow": "hard",
+    "topbar": "solid",
+    "sidebarSide": "left",
+    "decor": "brackets",
+    "textGlow": false,
+    "overlay": "grain",
+    "heroStyle": "shadow",
+    "uppercase": true
+  },
+  "icons": {
+    "style": "bold",
+    "color": "accent",
+    "custom": {
+      "settings": "icons/settings.svg",
+      "search": "icons/search.svg",
+      "new-thread": "icons/new-thread.svg",
+      "folder": "icons/folder.svg",
+      "plus": "icons/plus.svg",
+      "brain": "icons/brain.svg"
+    }
+  },
+  "loader": { "style": "braille" },
+  "motion": { "fps": 30, "resolution": 0.75, "interactive": true },
+  "scene": { "file": "scene.js", "params": {} },
+  "welcome": { "file": "welcome.js", "height": 190, "text": "FOLD IT AGAIN", "params": {} },
+  "textSafety": { "scrim": 0.78, "heroScrim": 0.55, "blur": 6, "busy": "high" }
+}

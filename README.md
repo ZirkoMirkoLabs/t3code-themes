@@ -1,14 +1,25 @@
 # T3 Code Themes
 
-A Themes add-on for [T3 Code](https://github.com/pingdotgg/t3code), with 17 animated themes. By Zirko Mirko Labs.
+A Themes add-on for [T3 Code](https://github.com/pingdotgg/t3code), with 25 animated themes, and you can make your own from a description using your own Claude or Codex subscription. By Zirko Mirko Labs. Unofficial: not made by or affiliated with the T3 Code team.
 
 [![Cozy Room](app/themes/cozy-room/thumb.jpg)](media/themes-proposal.mp4)
 
-**[▶ Watch the 50-second video](media/themes-proposal.mp4)** · [Install the app](app/README.md) · [Play the themes in your browser](https://zirkomirkolabs.github.io/t3code-themes/)
+**[▶ Watch the new 17-second video](media/make-any-theme.mp4)** · [the 50-second video](media/themes-proposal.mp4) · [Install the app](app/README.md) · [Play the themes in your browser](https://zirkomirkolabs.github.io/t3code-themes/)
 
 The app opens the real T3 Code client in its own window and adds a **Themes** button at the bottom right. Pick a theme and the whole app changes: colours, fonts, panels, an animated background and a title animation. The official app is not modified.
 
 **Cozy Room** is the default: a rainy night room with a black cat who lives on your desk. It walks behind the composer, paws the Send button, naps on its cushion and wakes up when you type.
+
+## The Viral themes (new)
+
+Eight code-only themes where the whole background reacts to your cursor. They are examples: make your own with **Create** in the app.
+
+| | | | |
+|---|---|---|---|
+| ![Purrfect Plush](app/themes/viral-fur-cat/thumb.jpg)<br>**Purrfect Plush** · pat the cat, get hearts | ![Jelly Friend](app/themes/viral-jelly/thumb.jpg)<br>**Jelly Friend** · poke it, it wobbles | ![Liquid Chrome](app/themes/viral-liquid-chrome/thumb.jpg)<br>**Liquid Chrome** · click for a splash | ![Holo Foil](app/themes/viral-holo-foil/thumb.jpg)<br>**Holo Foil** · tilt the foil, tear it open |
+| ![Riso Fold](app/themes/viral-riso-fold/thumb.jpg)<br>**Riso Fold** · an endless paper tunnel | ![Pocket Eden](app/themes/viral-terrarium/thumb.jpg)<br>**Pocket Eden** · plant trees, make rain | ![Midnight Fold](app/themes/viral-origami/thumb.jpg)<br>**Midnight Fold** · click to fold a crane | ![Sugar Meltdown](app/themes/viral-melt-planet/thumb.jpg)<br>**Sugar Meltdown** · fling a moon |
+
+Try them in the [live player](https://zirkomirkolabs.github.io/t3code-themes/?theme=viral-fur-cat).
 
 ## The themes
 
@@ -21,7 +32,7 @@ The app opens the real T3 Code client in its own window and adds a **Themes** bu
 | ![Lamplight](app/themes/lamplight/thumb.jpg)<br>**Lamplight** · one more chapter before bed | ![Dune](app/themes/dune/thumb.jpg)<br>**Dune** · wind over an apricot morning (light) | ![Outrun](app/themes/outrun/thumb.jpg)<br>**Outrun** · a striped sun on an endless grid |
 | ![Koi Lantern Night](app/skins/koi-lantern-night/thumb.jpg)<br>**Koi Lantern Night** · lanterns and koi under the moon | ![Sakura Dusk](app/skins/sakura-dusk/thumb.jpg)<br>**Sakura Dusk** · petals at golden hour | |
 
-The first seven are drawn entirely in code, with no image or video files. Moss Garden to Outrun use a painted backdrop (some with a short video loop), with code effects on top: mist, falling petals, snow, light rays and ripples. Koi Lantern Night and Sakura Dusk are picture-and-particle skins.
+The first seven in this table are drawn entirely in code, with no image or video files. Moss Garden to Outrun use a painted backdrop (some with a short video loop), with code effects on top: mist, falling petals, snow, light rays and ripples. Koi Lantern Night and Sakura Dusk are picture-and-particle skins.
 
 ## Install the app
 
@@ -33,7 +44,7 @@ The launcher finds T3 Code by itself. Click **Themes** at the bottom right to br
 
 ## In your browser
 
-The [live player](https://zirkomirkolabs.github.io/t3code-themes/) plays the seven code-only themes full screen, including Cozy Room with its cat. Add these to the link:
+The [live player](https://zirkomirkolabs.github.io/t3code-themes/) plays the 15 code-only themes full screen, including Cozy Room with its cat. Add these to the link:
 
 | Add | What it does |
 |---|---|

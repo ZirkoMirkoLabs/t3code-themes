@@ -5,6 +5,8 @@
 // 3 a scene cannot reach the network or the T3 page even if the validator is bypassed
 // 4 reduced motion -> still; 5 T3 markup change -> tokens-only mode; 6 theme switch leaves no stray sandboxes
 'use strict';
+// EPIPE-safe: a closed stdout (parent stopped) must not pop an Electron error dialog.
+for (const s of [process.stdout, process.stderr]) s.on('error', () => {});
 const { app, BrowserWindow } = require('electron');
 const fs = require('node:fs'), path = require('node:path');
 const themes = path.join(__dirname, '..', 'themes');
@@ -19,6 +21,8 @@ mk('zz-test-heavy', 'T3Scene(function (api) { return { frame: function () { var 
 // Injected straight into the page (skipping the validator, which would reject it): the sandbox itself must contain it.
 const ESCAPE = 'T3Scene(function (api) { var r = {}; r.doc = typeof document; r.parent = typeof parent; r.fetch = typeof self.fetch; r.xhr = typeof self.XMLHttpRequest; ' +
   'var res = "none"; try { importScripts("http://127.0.0.1:43872/runtime/engine.js"); res = "LOADED"; } catch (e) { res = "blocked"; } r.importScripts = res; throw new Error("probe " + JSON.stringify(r)); });';
+const cleanTmp = () => { for (const id of tmp) try { fs.rmSync(path.join(themes, id), { recursive: true, force: true }); } catch {} };
+process.on('exit', cleanTmp);
 let failures = 0; const check = (c, m) => { console.log((c ? '  ✓ ' : '  ✗ ') + m); if (!c) failures++; };
 const wait = ms => new Promise(r => setTimeout(r, ms));
 app.whenReady().then(async () => {

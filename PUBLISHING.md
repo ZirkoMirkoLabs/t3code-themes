@@ -41,7 +41,7 @@ If they say no, nothing is lost: the repo stays yours, and you can share it on i
 - launcher code, without `.profile/` (keys, settings, session) or `node_modules/`;
 - the runtime and theme studio, without thread briefs;
 - the playground, rewritten with sample projects;
-- the 15 themes and 2 skins, allow-listed files only (no receipts, plans or source videos).
+- the 23 themes and 2 skins, allow-listed files only (no receipts, plans or source videos).
 
 The same script refreshes the front-page player's `themes/` and `player/sandbox.js`.
 

@@ -12,7 +12,7 @@ const templatesRoot = path.join(root, 'runtime', 'templates');
 const LEGACY = [];
 const basesRoot = path.join(templatesRoot, 'bases');
 const BASES = ['toon-town', 'event-horizon', 'phosphor'];
-const BUILT_IN = ['cozy-room', 'meadow-breeze', 'koi-pond', 'portal-lab', 'playground', 'rainy-cafe', 'silk-flow', 'moss-garden', 'hanami', 'midnight-zone', 'deep-field', 'glacier', 'lamplight', 'dune', 'outrun'];
+const BUILT_IN = ['cozy-room', 'meadow-breeze', 'koi-pond', 'portal-lab', 'playground', 'rainy-cafe', 'silk-flow', 'moss-garden', 'hanami', 'midnight-zone', 'deep-field', 'glacier', 'lamplight', 'dune', 'outrun', 'viral-fur-cat', 'viral-jelly', 'viral-liquid-chrome', 'viral-holo-foil', 'viral-riso-fold', 'viral-terrarium', 'viral-origami', 'viral-melt-planet'];
 
 // Templates: runtime/templates/<name>.<kind>.js, or the scene/welcome of a built-in theme by id.
 function templates(name, kind) {

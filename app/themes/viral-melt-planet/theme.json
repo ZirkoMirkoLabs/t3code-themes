@@ -1,0 +1,64 @@
+{
+  "format": "t3theme/1",
+  "id": "viral-melt-planet",
+  "name": "Sugar Meltdown",
+  "tagline": "A candy planet having a very slow meltdown. Point the sun. Fling a moon.",
+  "description": "A giant taffy planet rises out of the corner and melts into deep space, dripping droplets that wander off as tiny moons. Your pointer is a sun-lamp that softens whatever it touches; click to fling a gooey blob into orbit. Glossy cosmic glass, candy accents.",
+  "category": "Viral",
+  "tags": ["viral", "melt", "candy", "planet", "space", "goo", "interactive", "pastel"],
+  "author": "T3 Code Themes",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#120e24",
+    "surface": "#1c1734",
+    "text": "#f7f2ff",
+    "muted": "#c3b8e6",
+    "accent": "#ff8fcb",
+    "accent2": "#7eecd2",
+    "border": "#3d3168",
+    "selection": "#5b2f6e",
+    "codeBg": "#0d0a1c",
+    "codeText": "#f1ebff"
+  },
+  "sceneColors": ["#ff9fd0", "#8ff0d8", "#ffd97a", "#fff0f7", "#b9a4ff", "#ffad6b", "#3b1d63", "#0a0818"],
+  "fonts": {
+    "ui": "ui-rounded, \"Segoe UI\", system-ui, sans-serif",
+    "mono": "\"Cascadia Mono\", Consolas, monospace",
+    "display": "\"Arial Rounded MT Bold\", \"Segoe UI Black\", \"Arial Black\", sans-serif"
+  },
+  "shape": { "radius": 22, "density": "normal", "borderWidth": 1 },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.86,
+    "blur": 16,
+    "shadow": "glow",
+    "topbar": "solid",
+    "decor": "none",
+    "textGlow": false,
+    "overlay": "vignette",
+    "heroStyle": "gradient",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "bold",
+    "color": "accent",
+    "custom": {
+      "settings": "icons/settings.svg",
+      "search": "icons/search.svg",
+      "new-thread": "icons/new-thread.svg",
+      "plus": "icons/plus.svg",
+      "folder": "icons/folder.svg",
+      "folder-plus": "icons/folder-plus.svg",
+      "stats": "icons/stats.svg",
+      "check": "icons/check.svg",
+      "clock": "icons/clock.svg",
+      "brain": "icons/brain.svg"
+    }
+  },
+  "loader": { "style": "bounce" },
+  "motion": { "fps": 30, "resolution": 0.85, "interactive": true },
+  "scene": { "file": "scene.js", "params": {} },
+  "welcome": { "file": "welcome.js", "height": 170, "text": "melt a new world", "params": {} },
+  "textSafety": { "scrim": 0.72, "heroScrim": 0.5, "blur": 10, "busy": "medium" }
+}

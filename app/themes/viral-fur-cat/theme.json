@@ -1,0 +1,101 @@
+{
+  "format": "t3theme/1",
+  "id": "viral-fur-cat",
+  "name": "Purrfect Plush",
+  "tagline": "Pat the cat, then build.",
+  "description": "A giant fluffy kitten peeks over your monitor and watches your cursor with starry eyes. Stroke the plush carpet to comb its pile; click for a pat, a paw print, a happy squint and floating hearts. Pat fast and it starts to purr sparkles.",
+  "category": "Viral",
+  "tags": [
+    "viral",
+    "fur",
+    "kitten",
+    "plush",
+    "interactive",
+    "cosy",
+    "dark"
+  ],
+  "author": "T3 Code Themes",
+  "generated": false,
+  "appearance": "dark",
+  "palette": {
+    "bg": "#140e17",
+    "surface": "#211825",
+    "text": "#fbf2f7",
+    "muted": "#cdb9c7",
+    "accent": "#ff9cc6",
+    "accent2": "#c7a6ff",
+    "border": "#4a3550",
+    "selection": "#4b2b45",
+    "codeBg": "#0f0a12",
+    "codeText": "#f6e8f0"
+  },
+  "sceneColors": [
+    "#3a2742",
+    "#a47db2",
+    "#f6eff8",
+    "#b6a3c6",
+    "#ff9cc6",
+    "#1c0b26",
+    "#fff7fb",
+    "#c7a6ff"
+  ],
+  "fonts": {
+    "ui": "ui-rounded, \"Segoe UI\", system-ui, sans-serif",
+    "mono": "\"Cascadia Mono\", Consolas, monospace",
+    "display": "\"Arial Rounded MT Bold\", ui-rounded, \"Segoe UI Black\", \"Segoe UI\", sans-serif"
+  },
+  "shape": {
+    "radius": 22,
+    "density": "normal",
+    "borderWidth": 1
+  },
+  "ui": {
+    "surface": "glass",
+    "glass": 0.9,
+    "blur": 14,
+    "shadow": "soft",
+    "topbar": "glass",
+    "decor": "stitch",
+    "textGlow": false,
+    "overlay": "grain",
+    "heroStyle": "glow",
+    "uppercase": false
+  },
+  "icons": {
+    "style": "cartoon",
+    "color": "accent",
+    "custom": {
+      "settings": "icons/settings.svg",
+      "search": "icons/search.svg",
+      "new-thread": "icons/new-thread.svg",
+      "folder": "icons/folder.svg",
+      "brain": "icons/brain.svg",
+      "clock": "icons/clock.svg",
+      "stats": "icons/stats.svg"
+    }
+  },
+  "loader": {
+    "style": "bounce"
+  },
+  "motion": {
+    "fps": 30,
+    "resolution": 0.75,
+    "interactive": true
+  },
+  "scene": {
+    "file": "scene.js",
+    "params": {}
+  },
+  "welcome": {
+    "file": "welcome.js",
+    "height": 170,
+    "text": "pat the cat, then build",
+    "params": {}
+  },
+  "textSafety": {
+    "scrim": 0.74,
+    "heroScrim": 0.2,
+    "blur": 8,
+    "busy": "medium"
+  }
+}
